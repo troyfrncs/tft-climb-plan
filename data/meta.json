@@ -1,0 +1,174 @@
+{
+  "set": "18",
+  "setName": "Enchanted Wilds",
+  "patch": "18.6B",
+  "updated": "2026-11-15",
+  "dataWindow": "Ranked games played 4–14 Nov 2026",
+  "nextChange": "Set 19 launches on 1 Dec 2026 and replaces every comp below.",
+  "player": {
+    "name": "777G0D",
+    "region": "SEA",
+    "rank": "Emerald III, 82 LP",
+    "games": 328,
+    "avgPlace": 4.46,
+    "top4Rate": 50.9,
+    "winRate": 18.3,
+    "profileUrl": "https://tactics.tools/player/sg/777G0D",
+    "leaks": [
+      "9 firsts but 8 eighths in your last 50 games",
+      "Econ graded C",
+      "Contested in 83.8% of games"
+    ]
+  },
+  "families": [
+    { "id": "ad", "name": "AD / attack speed", "slams": "Bow, sword, Guinsoo's, Edge of Night" },
+    { "id": "ap", "name": "AP / mana", "slams": "Rod, tear, Jeweled Gauntlet, Shojin" }
+  ],
+  "comps": [
+    {
+      "id": "brambleback",
+      "name": "Riftbeast Brambleback & Elder Dragon",
+      "family": "ad",
+      "start": "strong",
+      "style": "Fast 8",
+      "role": "Main comp",
+      "difficulty": "Hard",
+      "stats": { "avgPlace": 3.43, "top4": 70.7, "win": 22.4 },
+      "summary": "The strongest comp on the patch, and it builds on Elder Dragon, your best carry.",
+      "mustHave": "Guinsoo's + Edge of Night on Brambleback. Without both, play Master Yi reroll instead.",
+      "carry": "Brambleback",
+      "board": ["Brambleback", "Elder Dragon", "Krug", "Sett or Rakan", "Sentinel", "Taric", "Gnar", "Murkwolf or Sentry"],
+      "items": [
+        { "unit": "Brambleback", "build": "Guinsoo's + Edge of Night (both required), then Hand of Justice. QSS or Sterak's also work" },
+        { "unit": "Krug", "build": "Gargoyle's, Warmog's, Visage" },
+        { "unit": "Sentinel", "build": "Protector's Vow, Adaptive Helm, mana-generating tank items" }
+      ],
+      "augments": ["Omega Riftbeast", "Baron's Lair", "Soul Awakening"],
+      "augmentOrder": "Items, then combat, then econ",
+      "leveling": {
+        "label": "Win streak",
+        "steps": [["4", "2-1"], ["5", "2-5"], ["6", "3-1"], ["7", "3-5"], ["8", "4-2", "Roll here"], ["9", "5-2"]],
+        "note": "Loss-streaking? Go 9 at 5-5 instead."
+      },
+      "openers": [
+        { "name": "Riftbeast opener", "best": true, "board": "5 Riftbeast, with Akali or Camille holding items", "slam": "Guinsoo's or Edge of Night", "when": "You see early Riftbeasts. At 5 Riftbeast, a shop full of Riftbeasts appears after every 3 combats, which helps you find Krug copies." },
+        { "name": "Inferno AD opener", "board": "Akali as item holder, plus Inferno units", "slam": "Guinsoo's or Edge of Night on Akali", "when": "You start with Inferno units. Burn and Wound are built in, so skip Sunfire, Morellonomicon and Red Buff." },
+        { "name": "Rengar opener", "board": "Rengar as early carry", "slam": "Guinsoo's + Edge of Night", "when": "You get both items early. Hand them to Brambleback later. This also keeps Master Yi reroll open." }
+      ],
+      "tip": "You play nearly the same units every game, so item quality decides your placement. Spend carousels and augments on finishing Brambleback's items."
+    },
+    {
+      "id": "yi",
+      "name": "Master Yi reroll",
+      "family": "ad",
+      "start": "weak",
+      "style": "3-cost reroll",
+      "role": "AD backup",
+      "difficulty": "Easy",
+      "stats": { "avgPlace": 4.24, "top4": 55.0, "win": 12.3 },
+      "summary": "Your backup when you have AD items but a weak start or no Edge of Night.",
+      "mustHave": "An artifact, a Brawler Emblem, or a Rengar no one else is building. It's the most-played top-tier comp (4.7%), so scout first.",
+      "carry": "Master Yi",
+      "board": ["Master Yi ★★★", "Kog'Maw ★★★", "Rengar", "A 3-star frontliner", "Nidalee", "Krug", "Vi"],
+      "items": [
+        { "unit": "Master Yi", "build": "AP Yi: Guinsoo's, Edge of Night, Titan's. AD Yi: QSS, Edge of Night, Titan's. Artifacts like Wit's End or Hellfire Hatchet are even better" },
+        { "unit": "Rengar", "build": "Guinsoo's + Edge of Night (both required), Titan's" },
+        { "unit": "Kog'Maw", "build": "Infinity Edge, Shojin, Red Buff" },
+        { "unit": "Vi / Krug", "build": "Gargoyle's, Warmog's, Spirit's. Krug takes leftover tank items" }
+      ],
+      "augments": ["Artifact Generation", "Cooking Pot"],
+      "augmentOrder": "Items, then reroll, then econ",
+      "leveling": {
+        "label": "Loss streak",
+        "steps": [["4", "2-3"], ["5", "2-7"], ["6", "3-2"], ["7", "3-5", "40+ gold, slow roll above 50"], ["8", "5-1+"]],
+        "note": "Not loss-streaking? Take 7 at 3-5 or 4-1."
+      },
+      "openers": [
+        { "name": "Rengar opener", "best": true, "board": "Rengar as carry, plus whatever tanks you hit", "slam": "Guinsoo's + Edge of Night", "when": "Early Rengar with bows or swords. Add a Brawler Emblem and you're locked into Yi–Rengar reroll." },
+        { "name": "Blossom opener", "board": "3 Blossom: Yorick tanks, Master Yi in place of Karma", "slam": "Edge of Night on Yi", "when": "A Yi drops from an orb or shows up early. Yorick stays as your early frontline." }
+      ],
+      "tip": "This comp struggles from behind. Once Yi and a frontliner hit 3 stars, stop rolling, rebuild your gold and level. That's the econ habit your C grade is missing."
+    },
+    {
+      "id": "ahri",
+      "name": "Invoker Ahri flex",
+      "family": "ap",
+      "start": "strong",
+      "style": "Fast 8/9",
+      "role": "AP main",
+      "difficulty": "Medium",
+      "stats": { "avgPlace": 4.35, "top4": 53.6, "win": 12.2 },
+      "summary": "Your AP comp for strong starts. An Invoker Emblem on Ahri makes it one of the best comps in the game.",
+      "mustHave": "Lots of good AP items, and a path to level 9. Dying at 8 usually means 4th at best.",
+      "carry": "Ahri",
+      "board": ["Ahri ★★", "Morgana ★★", "Sentinel or Sett ★★", "Zyra or a 4-cost frontliner", "Karma", "Krug", "Alune, Taric, Gnar at 9"],
+      "items": [
+        { "unit": "Ahri", "build": "Invoker Emblem, Jeweled Gauntlet, Striker's, Shojin / Blue Buff, Nashor's" },
+        { "unit": "Morgana", "build": "Void Staff, Morellonomicon / Red Buff, Deathcap" },
+        { "unit": "Zyra / Alune", "build": "Void Staff, Morellonomicon / Red Buff, Shojin" },
+        { "unit": "Tanks", "build": "Sett or Amumu: generic tank items. Sentinel or Lillia: Protector's Vow, Adaptive Helm" }
+      ],
+      "augments": ["Item and emblem augments", "Bronze for Life"],
+      "augmentOrder": "Items or emblems, then econ, then combat",
+      "leveling": {
+        "label": "Win streak",
+        "steps": [["4", "2-1"], ["5", "2-5"], ["6", "3-1"], ["7", "3-5"], ["8", "4-2", "Roll here"], ["9", "5-2"]],
+        "note": "Low on HP at 4-2? Switch to Invoker Teemo."
+      },
+      "openers": [
+        { "name": "Blossom opener", "best": true, "board": "3 Blossom: Yorick tanks, Karma holds AP items", "slam": "Jeweled Gauntlet, Blue Buff or Striker's for Ahri. Void Staff or Shojin if you're win-streaking", "when": "The most consistent opener in the set. Karma's items go to Ahri later, and Yorick hands off to Amumu." },
+        { "name": "Azir variant", "board": "3 Blossom with Azir in place of Karma", "slam": "Any mana item", "when": "You have no 2-star Karma and no mana item." }
+      ],
+      "tip": "Put Ahri on the same side as the enemy carry so she kills it before your frontline breaks. Karma or Pebbles holds her items until she arrives in stage 4."
+    },
+    {
+      "id": "teemo",
+      "name": "Invoker Teemo reroll",
+      "family": "ap",
+      "start": "weak",
+      "style": "2-cost reroll",
+      "role": "Anti-bust",
+      "difficulty": "Easy",
+      "stats": { "avgPlace": 4.17, "top4": 58.8, "win": 8.3 },
+      "summary": "Your safety net. It rarely wins but usually lands top 4, which turns your 8ths into 4ths.",
+      "mustHave": "Jeweled Gauntlet + Shojin on Teemo, and early Teemo copies. Shares Morgana, Sentinel and AP items with Ahri.",
+      "carry": "Teemo",
+      "board": ["Teemo ★★★", "Alistar ★★★", "LeBlanc", "Morgana ★★", "Sentinel", "Kobuko", "Veigar ★★★ (optional)"],
+      "items": [
+        { "unit": "Teemo", "build": "Jeweled Gauntlet + Shojin (the minimum), Striker's third" },
+        { "unit": "Morgana", "build": "Morellonomicon / Red Buff, Void Staff, leftover AP" },
+        { "unit": "Alistar", "build": "Gargoyle's, Warmog's, Crownguard" }
+      ],
+      "augments": ["Item augments", "Combat augments"],
+      "augmentOrder": "Items, then combat, then econ",
+      "leveling": {
+        "label": "Loss streak",
+        "steps": [["4", "2-3"], ["5", "2-7"], ["6", "3-2", "Slow roll above 50 gold"], ["7", "4-1+"], ["8", "5-1+"]],
+        "note": "Win-streaking? 4 at 2-1, 5 at 2-5, 6 at 3-2."
+      },
+      "openers": [
+        { "name": "Teemo + Brawler opener", "best": true, "board": "Teemo with Brawler frontline: Alistar, Kobuko", "slam": "Jeweled Gauntlet or Shojin on Teemo", "when": "You hit 2+ Teemo copies early and have a rod or tear. Hold every Teemo and Alistar copy from 2-1 on." },
+        { "name": "Blossom opener", "board": "3 Blossom (Karma, Yorick) while holding Teemo copies", "slam": "Jeweled Gauntlet or Shojin on Karma", "when": "Blossom is strong early, but your Teemo copies aren't there yet. Switch to Teemo at 3-2." }
+      ],
+      "tip": "Your job is tempo and HP. Once Teemo is 3-star, stop rolling, level, and add Morgana 2 and Sentinel. Under 50 HP at 3-2 in an Ahri game? Move Ahri's items onto Teemo and reroll at 6."
+    }
+  ],
+  "pickSteps": [
+    "Stage 2: your first item slam picks the family. Bow or Guinsoo's means AD. Rod, tear or Jeweled Gauntlet means AP.",
+    "Stage 3-2: check HP and streak. Healthy and winning means the fast 8 comp. Losing or under 60 HP means the reroll comp.",
+    "Scout at 3-2 and 4-1: if two or more players are building your comp, switch to the other comp in your family."
+  ],
+  "rules": [
+    { "title": "No rolling below 50 gold before 4-2", "detail": "Unless you're under 40 HP or playing a reroll comp at its roll timing." },
+    { "title": "Under 50 HP at 4-1 on a fast 8 comp?", "detail": "Roll at 8 for a stable board, or switch to the reroll comp in your family. Don't greed for 9." },
+    { "title": "Scout at 3-2 and 4-1", "detail": "If two or more players are building your carry, switch comps right away." },
+    { "title": "Fight for 5th", "detail": "A 5th instead of an 8th saves you about 40 LP. When you're dying, roll everything for the strongest board you can make." },
+    { "title": "Stop after two bottom-4s in a row", "detail": "Your –126 LP session on 14 Nov came from three bad games back to back." }
+  ],
+  "sources": [
+    { "name": "Bunnymuffins Set 18 meta, patch 18.6", "url": "https://bunnymuffins.lol/meta/", "used": "Builds, items, augments, leveling" },
+    { "name": "SeeMeta comp tier list, patch 18.6", "url": "https://seemeta.com/tr/tft/synergies/Strong", "used": "Placement, top 4 and win rates" },
+    { "name": "Mobalytics Set 18 openers guide", "url": "https://mobalytics.gg/tft/guides/best-openers-set18", "used": "Openers (written for patch 18.2)" },
+    { "name": "Enchanted Wilds on the League of Legends Wiki", "url": "https://wiki.leagueoflegends.com/en-us/TFT:Enchanted_Wilds", "used": "Champion and trait icons" }
+  ]
+}

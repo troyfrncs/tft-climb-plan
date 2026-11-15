@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TFT Climbing Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lichen:#E9EEE6; --paper:#F7F9F4; --bark:#23302B; --bark-soft:#56655E;
+  --line:#C9D3C6; --ad:#A8701A; --ad-tint:#F3E6CC; --ap:#7A4BA8; --ap-tint:#E9DEF4;
+  --spore:#2E7D6B;
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--lichen);color:var(--bark)}
+body{margin:0;font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--spore);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;padding:28px 0 8px}
+.top h1{font-family:var(--display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.patch{font-size:15px;color:var(--bark-soft)}
+.patch strong{color:var(--bark)}
+
+/* Player strip */
+.player{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:center;padding:18px 0 26px;border-bottom:1px solid var(--line)}
+.player .who{font-family:var(--display);font-weight:700;font-size:20px}
+.player .who a{text-decoration-color:var(--line);text-underline-offset:4px}
+.player .who small{display:block;font-family:var(--body);font-weight:400;font-size:15px;color:var(--bark-soft)}
+.player dl{display:flex;flex-wrap:wrap;gap:8px 28px;margin:0}
+.player dl div{display:flex;align-items:baseline;gap:6px}
+.player dt{font-size:14px;color:var(--bark-soft)}
+.player dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.leaks{grid-column:1/-1;font-size:15px;color:var(--bark-soft);margin:6px 0 0}
+
+/* Matrix hero */
+.intro{padding:40px 0 18px;max-width:62ch}
+.intro h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,5.4vw,58px);line-height:1.02;letter-spacing:-.025em;margin:0 0 14px}
+.intro p{margin:0;color:var(--bark-soft)}
+.matrix{display:grid;grid-template-columns:150px 1fr 1fr;gap:0;margin:18px 0 8px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.matrix .colhead{padding:14px 18px;font-size:15px;color:var(--bark-soft);border-bottom:1px solid var(--line)}
+.matrix .corner{border-bottom:1px solid var(--line)}
+.matrix .rowhead{padding:18px;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.15;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.matrix .rowhead small{font-family:var(--body);font-weight:400;font-size:14px;color:var(--bark-soft)}
+.row-ad .rowhead{color:var(--ad)}
+.row-ap .rowhead{color:var(--ap)}
+.row-ad{--fam:var(--ad);--tint:var(--ad-tint)}
+.row-ap{--fam:var(--ap);--tint:var(--ap-tint)}
+.matrix > .row-ad.rowhead,.matrix > .row-ad.cell{border-bottom:1px solid var(--line)}
+.cell{appearance:none;border:0;border-left:1px solid var(--line);background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:22px 22px 20px;display:flex;flex-direction:column;gap:10px;min-height:168px;position:relative;transition:background-color .18s}
+.cell:hover{background:color-mix(in srgb,var(--tint) 55%,transparent)}
+.cell[aria-pressed="true"]{background:var(--tint)}
+.cell[aria-pressed="true"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--fam)}
+.cell .name{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,27px);line-height:1.08;letter-spacing:-.015em}
+.cell .meta{font-size:14px;color:var(--bark-soft)}
+.cell .nums{margin-top:auto;display:flex;gap:18px;font-variant-numeric:tabular-nums;font-size:15px}
+.cell .nums b{font-family:var(--display);font-size:22px;color:var(--fam)}
+.steps{margin:22px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.steps li{counter-increment:s;font-size:15px;color:var(--bark-soft);padding-top:12px;border-top:2px solid var(--bark)}
+.steps li::before{content:counter(s);display:block;font-family:var(--display);font-weight:800;font-size:20px;color:var(--bark);margin-bottom:4px}
+
+/* Comp detail */
+.comp{margin:56px 0 0;padding:34px 0 0;border-top:1px solid var(--line)}
+.comp-head{display:grid;grid-template-columns:1fr auto;gap:18px 32px;align-items:end}
+.comp-head .tag{font-size:15px;font-weight:700;color:var(--fam)}
+.comp-head h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.2vw,46px);line-height:1.03;letter-spacing:-.02em;margin:4px 0 10px}
+.comp-head p{margin:0;max-width:60ch}
+.stat{display:flex;gap:26px}
+.stat div{text-align:right}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--fam);font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--bark-soft)}
+.must{margin:22px 0 0;padding:14px 18px;border-left:5px solid var(--fam);background:var(--tint);border-radius:0 10px 10px 0;max-width:72ch}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;margin-top:38px}
+h3{font-family:var(--display);font-weight:700;font-size:21px;margin:0 0 14px;letter-spacing:-.01em}
+.board{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.board li{padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:15px}
+.board li.carry{border-color:var(--fam);background:var(--fam);color:#fff;font-weight:700}
+.augs{margin-top:26px}
+.augs p{margin:6px 0 0;font-size:15px;color:var(--bark-soft)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+th{font-weight:700;width:30%}
+.track{margin-top:40px}
+.track ol{list-style:none;margin:0;padding:22px 0 0;display:flex;position:relative}
+.track ol::before{content:"";position:absolute;left:18px;right:18px;top:40px;height:3px;background:var(--line)}
+.track li{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:6px;position:relative;min-width:0}
+.track .lv{width:38px;height:38px;border-radius:50%;background:var(--paper);border:3px solid var(--fam);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:17px;position:relative;z-index:1}
+.track li.key .lv{background:var(--fam);color:#fff}
+.track .st{font-weight:700;font-variant-numeric:tabular-nums}
+.track .nt{font-size:13px;color:var(--bark-soft);padding-right:8px}
+.track > p{margin:14px 0 0;font-size:15px;color:var(--bark-soft)}
+.openers{margin-top:44px}
+.op-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.op{padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.op.best{border:2px solid var(--fam)}
+.op h4{font-family:var(--display);font-weight:700;font-size:18px;margin:0 0 10px;display:flex;justify-content:space-between;gap:10px}
+.op h4 em{font-style:normal;font-family:var(--body);font-size:13px;font-weight:700;color:var(--fam);white-space:nowrap}
+.op dl{margin:0;display:grid;gap:8px;font-size:15px}
+.op dt{font-weight:700;font-size:13px;color:var(--bark-soft)}
+.op dd{margin:0}
+.tip{margin:34px 0 0;font-size:18px;max-width:66ch}
+.tip strong{color:var(--fam)}
+
+/* Rules */
+.rules{margin:72px 0 0;padding:40px;border-radius:22px;background:var(--bark);color:var(--lichen)}
+.rules h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,40px);letter-spacing:-.02em;margin:0 0 6px}
+.rules > p{margin:0 0 26px;color:#B9C6BE}
+.rules ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px 34px}
+.rules li strong{display:block;font-family:var(--display);font-size:19px;margin-bottom:4px;color:#fff}
+.rules li span{color:#B9C6BE;font-size:15px}
+
+footer{margin:56px 0 0;padding:26px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--bark-soft);display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
+footer ul{margin:6px 0 0;padding-left:18px}
+footer p{margin:0 0 8px}
+.error{padding:60px 0;font-size:18px}
+
+@media (max-width:820px){
+  .matrix{grid-template-columns:1fr 1fr}
+  .matrix .corner{display:none}
+  .matrix .colhead{display:none}
+  .matrix .rowhead{grid-column:1/-1;padding:14px 18px 4px;border-bottom:0!important}
+  .cell{border-left:0;min-height:150px}
+  .cell + .cell{border-left:1px solid var(--line)}
+  .cell .meta::before{content:attr(data-start) " · "}
+  .steps{grid-template-columns:1fr}
+  .comp-head,.grid2,footer{grid-template-columns:1fr}
+  .stat div{text-align:left}
+  .player{grid-template-columns:1fr}
+  .track ol{flex-wrap:wrap;row-gap:18px}
+  .track ol::before{display:none}
+  .track li{flex:0 0 33%}
+  .rules{padding:28px 22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><p class="error">Loading your plan…</p></div>
+
+<script>
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function compCell(c){
+  return `<button class="cell row-${c.family}" data-id="${c.id}" aria-pressed="false" aria-controls="detail">
+    <span class="name">${esc(c.name)}</span>
+    <span class="meta" data-start="${c.start === 'strong' ? 'Strong start' : 'Weak start'}">${esc(c.style)} · ${esc(c.role)} · ${esc(c.difficulty)}</span>
+    <span class="nums"><span><b>${c.stats.avgPlace.toFixed(2)}</b> avg</span><span><b>${Math.round(c.stats.top4)}%</b> top 4</span></span>
+  </button>`;
+}
+
+function detail(c){
+  const steps = c.leveling.steps.map(([lv, st, note]) =>
+    `<li class="${note && /roll here/i.test(note) ? 'key' : ''}"><span class="lv">${esc(lv)}</span><span class="st">${esc(st)}</span>${note ? `<span class="nt">${esc(note)}</span>` : ''}</li>`).join('');
+  return `<section class="comp row-${c.family}" id="detail" aria-live="polite">
+    <div class="comp-head">
+      <div>
+        <span class="tag">${c.family === 'ad' ? 'AD' : 'AP'} · ${c.start === 'strong' ? 'Strong start' : 'Weak start'} · ${esc(c.style)}</span>
+        <h2>${esc(c.name)}</h2>
+        <p>${esc(c.summary)}</p>
+      </div>
+      <div class="stat">
+        <div><b>${c.stats.avgPlace.toFixed(2)}</b><span>avg place</span></div>
+        <div><b>${c.stats.top4.toFixed(1)}%</b><span>top 4</span></div>
+        <div><b>${c.stats.win.toFixed(1)}%</b><span>win</span></div>
+      </div>
+    </div>
+    <p class="must"><strong>Needs:</strong> ${esc(c.mustHave)}</p>
+
+    <div class="grid2">
+      <div>
+        <h3>Final board</h3>
+        <ul class="board">${c.board.map(u => `<li class="${u.startsWith(c.carry) ? 'carry' : ''}">${esc(u)}</li>`).join('')}</ul>
+        <div class="augs">
+          <h3>Augments</h3>
+          <ul class="board">${c.augments.map(a => `<li>${esc(a)}</li>`).join('')}</ul>
+          <p>Priority: ${esc(c.augmentOrder)}</p>
+        </div>
+      </div>
+      <div>
+        <h3>Items</h3>
+        <table><tbody>${c.items.map(i => `<tr><th scope="row">${esc(i.unit)}</th><td>${esc(i.build)}</td></tr>`).join('')}</tbody></table>
+      </div>
+    </div>
+
+    <div class="track">
+      <h3>When to level · ${esc(c.leveling.label)}</h3>
+      <ol aria-label="Level by stage">${steps}</ol>
+      <p>${esc(c.leveling.note)}</p>
+    </div>
+
+    <div class="openers">
+      <h3>Best openers</h3>
+      <div class="op-list">${c.openers.map(o => `<article class="op ${o.best ? 'best' : ''}">
+        <h4>${esc(o.name)}${o.best ? '<em>Best opener</em>' : ''}</h4>
+        <dl><div><dt>Stage 2 board</dt><dd>${esc(o.board)}</dd></div>
+        <div><dt>First slam</dt><dd>${esc(o.slam)}</dd></div>
+        <div><dt>Take it when</dt><dd>${esc(o.when)}</dd></div></dl>
+      </article>`).join('')}</div>
+    </div>
+
+    <p class="tip"><strong>Tip:</strong> ${esc(c.tip)}</p>
+  </section>`;
+}
+
+function render(d){
+  const byKey = (fam, start) => d.comps.find(c => c.family === fam && c.start === start);
+  const p = d.player;
+  const row = fam => {
+    const f = d.families.find(x => x.id === fam);
+    return `<div class="rowhead row-${fam}">${esc(f.name)}<small>${esc(f.slams)}</small></div>
+      ${compCell(byKey(fam,'strong'))}${compCell(byKey(fam,'weak'))}`;
+  };
+  document.getElementById('app').innerHTML = `
+  <header class="top">
+    <h1>TFT Climbing Plan</h1>
+    <span class="patch">Set ${esc(d.set)} ${esc(d.setName)} · <strong>Patch ${esc(d.patch)}</strong> · updated ${esc(d.updated)}</span>
+  </header>
+  <section class="player" aria-label="Your profile">
+    <div class="who"><a href="${esc(p.profileUrl)}" target="_blank" rel="noopener">${esc(p.name)}</a><small>${esc(p.rank)} · ${esc(p.region)}</small></div>
+    <dl>
+      <div><dt>Games</dt><dd>${p.games}</dd></div>
+      <div><dt>Avg place</dt><dd>${p.avgPlace}</dd></div>
+      <div><dt>Top 4</dt><dd>${p.top4Rate}%</dd></div>
+      <div><dt>Wins</dt><dd>${p.winRate}%</dd></div>
+    </dl>
+    <p class="leaks">What to fix: ${p.leaks.map(esc).join('; ')}.</p>
+  </section>
+
+  <section class="intro">
+    <h2>Four comps. Your first item picks the row.</h2>
+    <p>Play only these until you leave Emerald. Each row shares items, so you can switch between its two comps mid-game without wasting anything.</p>
+  </section>
+  <div class="matrix" role="group" aria-label="Pick a comp">
+    <div class="corner"></div>
+    <div class="colhead">Strong start: win streak, healthy</div>
+    <div class="colhead">Weak start: losing, low HP or contested</div>
+    ${row('ad')}${row('ap')}
+  </div>
+  <ol class="steps">${d.pickSteps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+
+  <div id="detail-slot"></div>
+
+  <section class="rules">
+    <h2>Your five rules</h2>
+    <p>These target the two leaks on your profile: busting to 8th and spending gold too early.</p>
+    <ul>${d.rules.map(r => `<li><strong>${esc(r.title)}</strong><span>${esc(r.detail)}</span></li>`).join('')}</ul>
+  </section>
+
+  <footer>
+    <div>
+      <p>Comp stats: ${esc(d.dataWindow)}. ${esc(d.nextChange)}</p>
+      <p>Not endorsed by Riot Games. Teamfight Tactics is a trademark of Riot Games, Inc.</p>
+    </div>
+    <div>Sources<ul>${d.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>: ${esc(s.used)}</li>`).join('')}</ul></div>
+  </footer>`;
+
+  const select = id => {
+    const c = d.comps.find(x => x.id === id) || d.comps[0];
+    document.querySelectorAll('.cell').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === c.id)));
+    document.getElementById('detail-slot').innerHTML = detail(c);
+    return c;
+  };
+  document.querySelectorAll('.cell').forEach(b => b.addEventListener('click', () => {
+    select(b.dataset.id);
+    history.replaceState(null, '', '#' + b.dataset.id);
+    document.getElementById('detail').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'});
+  }));
+  select(location.hash.slice(1));
+}
+
+fetch('data/meta.json', {cache: 'no-cache'})
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(render)
+  .catch(() => { document.getElementById('app').innerHTML = '<p class="error">The comp data didn\'t load. Refresh the page; if it still fails, check that data/meta.json is in the repo.</p>'; });
+</script>
+</body>
+</html>
