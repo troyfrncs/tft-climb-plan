@@ -51,7 +51,7 @@
         "Sentinel",
         "Taric",
         "Gnar",
-        "Murkwolf or Sentry"
+        "Murkwolf or Pebbles"
       ],
       "items": [
         {
@@ -70,7 +70,6 @@
           "build": "Protector's Vow, Adaptive Helm, mana-generating tank items"
         }
       ],
-      "augments": ["Omega Riftbeast", "Baron's Lair", "Soul Awakening"],
       "augmentOrder": "Items, then combat, then econ",
       "leveling": {
         "label": "Win streak",
@@ -83,22 +82,70 @@
           "best": true,
           "board": "5 Riftbeast, with Akali or Camille holding items",
           "slam": "Guinsoo's or Edge of Night",
-          "when": "You see early Riftbeasts. At 5 Riftbeast, a shop full of Riftbeasts appears after every 3 combats, which helps you find Krug copies."
+          "when": "You see early Riftbeasts. At 5 Riftbeast, a shop full of Riftbeasts appears after every 3 combats, which helps you find Krug copies.",
+          "positioning": [
+            ["Murkwolf", 0, 2],
+            ["Scuttlecrab", 0, 3],
+            ["Akali", 0, 4],
+            ["Gromp", 3, 0],
+            ["Cinderling", 3, 1],
+            ["Pebbles", 3, 2]
+          ]
         },
         {
           "name": "Inferno AD opener",
           "board": "Akali as item holder, plus Inferno units",
           "slam": "Guinsoo's or Edge of Night on Akali",
-          "when": "You start with Inferno units. Burn and Wound are built in, so skip Sunfire, Morellonomicon and Red Buff."
+          "when": "You start with Inferno units. Burn and Wound are built in, so skip Sunfire, Morellonomicon and Red Buff.",
+          "positioning": [["Akali", 0, 2], ["Shen", 0, 3], ["Scuttlecrab", 0, 4], ["Varus", 3, 0], ["Cinderling", 3, 1]]
         },
         {
           "name": "Rengar opener",
           "board": "Rengar as early carry",
           "slam": "Guinsoo's + Edge of Night",
-          "when": "You get both items early. Hand them to Brambleback later. This also keeps Master Yi reroll open."
+          "when": "You get both items early. Hand them to Brambleback later. This also keeps Master Yi reroll open.",
+          "positioning": [["Diana", 0, 2], ["Rakan", 0, 3], ["Yorick", 0, 4], ["Rengar", 1, 0], ["Pebbles", 3, 1]]
         }
       ],
-      "tip": "You play nearly the same units every game, so item quality decides your placement. Spend carousels and augments on finishing Brambleback's items."
+      "tip": "You play nearly the same units every game, so item quality decides your placement. Spend carousels and augments on finishing Brambleback's items.",
+      "positioning": {
+        "units": [
+          ["Krug ★★★", 0, 3],
+          ["Sett", 0, 4],
+          ["Murkwolf", 2, 0],
+          ["Elder Dragon", 2, 1],
+          ["Gnar", 2, 3],
+          ["Taric", 2, 4],
+          ["Sentinel", 2, 5],
+          ["Brambleback", 3, 0]
+        ],
+        "notes": [
+          "Krug stands alone up front and takes the first hits.",
+          "Clump everyone else one row back on the left, with Brambleback in the corner behind Elder Dragon.",
+          "Have Group Hug? Make a tight triangle with Brambleback in the middle.",
+          "Late game, give Elder Dragon the Alpha Mark."
+        ]
+      },
+      "augmentTiers": {
+        "S": ["Omega Riftbeast", "Bodyguard Training", "Frontline Foundation"],
+        "A": ["Group Hug II", "Verticality III", "Baron's Lair", "Soul Awakening", "Comeback Story"],
+        "B": ["Verticality II", "Group Hug I"]
+      },
+      "itemTiers": {
+        "S": ["Guinsoo's Rageblade", "Edge of Night", "Quicksilver", "Gargoyle Stoneplate"],
+        "A": [
+          "Hand of Justice",
+          "Sterak's Gage",
+          "Infinity Edge",
+          "Last Whisper",
+          "Warmog's Armor",
+          "Spirit Visage",
+          "Protector's Vow",
+          "Vanguard Emblem",
+          "Brawler Emblem"
+        ],
+        "B": ["Titan's Resolve", "Bloodthirster", "Adaptive Helm"]
+      }
     },
     {
       "id": "yi",
@@ -135,7 +182,6 @@
           "build": "Gargoyle's, Warmog's, Spirit's. Krug takes leftover tank items"
         }
       ],
-      "augments": ["Artifact Generation", "Cooking Pot"],
       "augmentOrder": "Items, then reroll, then econ",
       "leveling": {
         "label": "Loss streak",
@@ -154,16 +200,54 @@
           "best": true,
           "board": "Rengar as carry, plus whatever tanks you hit",
           "slam": "Guinsoo's + Edge of Night",
-          "when": "Early Rengar with bows or swords. Add a Brawler Emblem and you're locked into Yi–Rengar reroll."
+          "when": "Early Rengar with bows or swords. Add a Brawler Emblem and you're locked into Yi–Rengar reroll.",
+          "positioning": [["Diana", 0, 2], ["Rakan", 0, 3], ["Akali", 0, 4], ["Rengar", 1, 0], ["Pebbles", 3, 1]]
         },
         {
           "name": "Blossom opener",
           "board": "3 Blossom: Yorick tanks, Master Yi in place of Karma",
           "slam": "Edge of Night on Yi",
-          "when": "A Yi drops from an orb or shows up early. Yorick stays as your early frontline."
+          "when": "A Yi drops from an orb or shows up early. Yorick stays as your early frontline.",
+          "positioning": [["Master Yi", 0, 1], ["Yorick", 0, 3], ["Kobuko", 0, 4], ["Yunara", 3, 0], ["Gromp", 3, 1]]
         }
       ],
-      "tip": "This comp struggles from behind. Once Yi and a frontliner hit 3 stars, stop rolling, rebuild your gold and level. That's the econ habit your C grade is missing."
+      "tip": "This comp struggles from behind. Once Yi and a frontliner hit 3 stars, stop rolling, rebuild your gold and level. That's the econ habit your C grade is missing.",
+      "positioning": {
+        "units": [
+          ["Vi ★★★", 0, 1],
+          ["3-star frontliner", 0, 2],
+          ["Master Yi ★★★", 1, 0],
+          ["Rengar", 1, 1],
+          ["Krug", 1, 6],
+          ["Kog'Maw ★★★", 3, 0],
+          ["Nidalee", 3, 1]
+        ],
+        "notes": [
+          "Stack the carries in the left corner: Yi in front, Kog'Maw and Nidalee behind.",
+          "Vi stands right in front of Yi so the enemy hits Vi first.",
+          "Krug holds the far right on its own to split enemy attention.",
+          "Facing assassins? Swap Kog'Maw and Nidalee so Nidalee takes the jump."
+        ]
+      },
+      "augmentTiers": {
+        "S": ["Living Forge", "Forged In Strength", "Latent Forge"],
+        "A": ["Group Hug II", "Nesting Anvils", "Portable Forge", "Heroic Grab Bag"],
+        "B": ["Group Hug I", "Cooking Pot"]
+      },
+      "itemTiers": {
+        "S": ["Guinsoo's Rageblade", "Edge of Night", "Wit's End", "Hellfire Hatchet", "Gargoyle Stoneplate"],
+        "A": [
+          "Titan's Resolve",
+          "Quicksilver",
+          "Spear of Shojin",
+          "Red Buff",
+          "Giant Slayer",
+          "Warmog's Armor",
+          "Brawler Emblem",
+          "Flickerblades"
+        ],
+        "B": ["Infinity Edge", "Rabadon's Deathcap", "Spirit Visage"]
+      }
     },
     {
       "id": "ahri",
@@ -208,7 +292,6 @@
           "build": "Sett or Amumu: generic tank items. Sentinel or Lillia: Protector's Vow, Adaptive Helm"
         }
       ],
-      "augments": ["Item and emblem augments", "Bronze for Life"],
       "augmentOrder": "Items or emblems, then econ, then combat",
       "leveling": {
         "label": "Win streak",
@@ -221,16 +304,55 @@
           "best": true,
           "board": "3 Blossom: Yorick tanks, Karma holds AP items",
           "slam": "Jeweled Gauntlet, Blue Buff or Striker's for Ahri. Void Staff or Shojin if you're win-streaking",
-          "when": "The most consistent opener in the set. Karma's items go to Ahri later, and Yorick hands off to Amumu."
+          "when": "The most consistent opener in the set. Karma's items go to Ahri later, and Yorick hands off to Amumu.",
+          "positioning": [["Rakan", 0, 2], ["Yorick", 0, 3], ["Kobuko", 0, 4], ["Yunara", 3, 0], ["Karma", 3, 1]]
         },
         {
           "name": "Azir variant",
           "board": "3 Blossom with Azir in place of Karma",
           "slam": "Any mana item",
-          "when": "You have no 2-star Karma and no mana item."
+          "when": "You have no 2-star Karma and no mana item.",
+          "positioning": [["Rakan", 0, 2], ["Yorick", 0, 3], ["Kobuko", 0, 4], ["Yunara", 3, 0], ["Azir", 3, 1]]
         }
       ],
-      "tip": "Put Ahri on the same side as the enemy carry so she kills it before your frontline breaks. Karma or Pebbles holds her items until she arrives in stage 4."
+      "tip": "Put Ahri on the same side as the enemy carry so she kills it before your frontline breaks. Karma or Pebbles holds her items until she arrives in stage 4.",
+      "positioning": {
+        "units": [
+          ["Sentinel ★★", 0, 2],
+          ["Krug", 0, 3],
+          ["Taric", 0, 4],
+          ["Morgana ★★", 2, 1],
+          ["Zyra", 3, 0],
+          ["Karma", 3, 1],
+          ["Ahri ★★", 3, 2],
+          ["Alune", 3, 4]
+        ],
+        "notes": [
+          "Fill the front row with tanks so nothing reaches the back.",
+          "Ahri and Zyra go in the back row, one hex apart.",
+          "Put Ahri on the same side as the enemy carry so she kills it first.",
+          "Morgana sits one row up to cover Ahri from divers."
+        ]
+      },
+      "augmentTiers": {
+        "S": ["Staffsmith", "Jeweled Lotus II", "Wand Overflow"],
+        "A": ["Jeweled Lotus I", "Bronze For Life II", "Bronze For Life I", "Cybernetic Uplink"],
+        "B": ["Glass Cannon I"]
+      },
+      "itemTiers": {
+        "S": ["Invoker Emblem", "Jeweled Gauntlet", "Spear of Shojin", "Striker's Flail", "Void Staff"],
+        "A": [
+          "Blue Buff",
+          "Morellonomicon",
+          "Nashor's Tooth",
+          "Rabadon's Deathcap",
+          "Spellweaver Emblem",
+          "Protector's Vow",
+          "Warmog's Armor",
+          "Bramble Vest"
+        ],
+        "B": ["Red Buff", "Adaptive Helm", "Spirit Visage", "Archangel's Staff"]
+      }
     },
     {
       "id": "teemo",
@@ -262,7 +384,6 @@
           "build": "Gargoyle's, Warmog's, Crownguard"
         }
       ],
-      "augments": ["Item augments", "Combat augments"],
       "augmentOrder": "Items, then combat, then econ",
       "leveling": {
         "label": "Loss streak",
@@ -275,16 +396,45 @@
           "best": true,
           "board": "Teemo with Brawler frontline: Alistar, Kobuko",
           "slam": "Jeweled Gauntlet or Shojin on Teemo",
-          "when": "You hit 2+ Teemo copies early and have a rod or tear. Hold every Teemo and Alistar copy from 2-1 on."
+          "when": "You hit 2+ Teemo copies early and have a rod or tear. Hold every Teemo and Alistar copy from 2-1 on.",
+          "positioning": [["Rek'Sai", 0, 2], ["Kobuko", 0, 3], ["Alistar", 0, 4], ["Veigar", 3, 5], ["Teemo", 3, 6]]
         },
         {
           "name": "Blossom opener",
           "board": "3 Blossom (Karma, Yorick) while holding Teemo copies",
           "slam": "Jeweled Gauntlet or Shojin on Karma",
-          "when": "Blossom is strong early, but your Teemo copies aren't there yet. Switch to Teemo at 3-2."
+          "when": "Blossom is strong early, but your Teemo copies aren't there yet. Switch to Teemo at 3-2.",
+          "positioning": [["Kobuko", 0, 3], ["Yorick", 0, 4], ["Yunara", 3, 5], ["Karma", 3, 6]]
         }
       ],
-      "tip": "Your job is tempo and HP. Once Teemo is 3-star, stop rolling, level, and add Morgana 2 and Sentinel. Under 50 HP at 3-2 in an Ahri game? Move Ahri's items onto Teemo and reroll at 6."
+      "tip": "Your job is tempo and HP. Once Teemo is 3-star, stop rolling, level, and add Morgana 2 and Sentinel. Under 50 HP at 3-2 in an Ahri game? Move Ahri's items onto Teemo and reroll at 6.",
+      "positioning": {
+        "units": [
+          ["Alistar ★★★", 0, 4],
+          ["Sentinel", 1, 4],
+          ["Kobuko", 2, 1],
+          ["Morgana ★★", 2, 4],
+          ["Veigar ★★★", 3, 0],
+          ["LeBlanc", 3, 5],
+          ["Teemo ★★★", 3, 6]
+        ],
+        "notes": [
+          "Teemo goes in the back right corner, LeBlanc right next to him.",
+          "Alistar, Sentinel and Morgana make a wall in front of Teemo.",
+          "Kobuko and Veigar hold the left side so the enemy splits up.",
+          "Mirror the whole board if the enemy carry is on the left."
+        ]
+      },
+      "augmentTiers": {
+        "S": ["Deadlier Caps", "Radiant Relics", "Jeweled Lotus I"],
+        "A": ["Worth the Wait II", "Pandora's Bench", "Solo Plate", "Trade Sector"],
+        "B": ["NO SCOUT NO PIVOT"]
+      },
+      "itemTiers": {
+        "S": ["Jeweled Gauntlet", "Spear of Shojin", "Striker's Flail", "Gargoyle Stoneplate"],
+        "A": ["Rabadon's Deathcap", "Void Staff", "Morellonomicon", "Warmog's Armor", "Blue Buff", "Crownguard"],
+        "B": ["Nashor's Tooth", "Archangel's Staff", "Red Buff"]
+      }
     }
   ],
   "pickSteps": [
@@ -316,6 +466,16 @@
   ],
   "sources": [
     {
+      "name": "TFT Academy comp guides, patch 18.6",
+      "url": "https://tftacademy.com/tierlist/comps",
+      "used": "Positioning, augment picks and best-in-slot items per comp"
+    },
+    {
+      "name": "TFT Academy item and augment tier lists, patch 18.6",
+      "url": "https://tftacademy.com/tierlist/augments",
+      "used": "Ranking items and augments into tiers"
+    },
+    {
       "name": "Bunnymuffins Set 18 meta, patch 18.6",
       "url": "https://bunnymuffins.lol/meta/",
       "used": "Builds, items, augments, leveling"
@@ -346,8 +506,11 @@
       "Azir": { "icon": "assets/characters/tft18_azir/tft18_azir_square.png", "cost": 3 },
       "Brambleback": { "icon": "assets/characters/tft18_brambleback/tft18_brambleback_square.png", "cost": 4 },
       "Camille": { "icon": "assets/characters/tft18_camille/tft18_camille_square.png", "cost": 1 },
+      "Cinderling": { "icon": "assets/characters/tft18_cinderling/tft18_cinderling_square.png", "cost": 1 },
+      "Diana": { "icon": "assets/characters/tft18_diana/tft18_diana_square.png", "cost": 3 },
       "Elder Dragon": { "icon": "assets/characters/tft18_elderdragon/hud/tft18_elderdragon_square.png", "cost": 5 },
       "Gnar": { "icon": "assets/characters/tft18_gnar/tft18_gnar_square.png", "cost": 5 },
+      "Gromp": { "icon": "assets/characters/tft18_gromp/tft18_gromp_square.png", "cost": 2 },
       "Karma": { "icon": "assets/characters/tft18_karma/tft18_karma_square.png", "cost": 1 },
       "Kobuko": { "icon": "assets/characters/tft18_kobuko/tft18_kobuko_square.png", "cost": 1 },
       "Kog'Maw": { "icon": "assets/characters/tft18_kogmaw/tft18_kogmaw_square.png", "cost": 3 },
@@ -357,43 +520,92 @@
       "Morgana": { "icon": "assets/characters/tft18_morgana/tft18_morgana_square.png", "cost": 4 },
       "Murkwolf": { "icon": "assets/characters/tft18_murkwolf/tft18_murkwolf_square.png", "cost": 2 },
       "Nidalee": { "icon": "assets/characters/tft18_nidalee/tft18_nidalee_square.png", "cost": 4 },
+      "Pebbles": { "icon": "assets/characters/tft18_sentry/tft18_sentry_square.png", "cost": 1 },
       "Rakan": { "icon": "assets/characters/tft18_rakan/tft18_rakan_square.png", "cost": 1 },
+      "Rek'Sai": { "icon": "assets/characters/tft18_reksai/tft18_reksai_square.png", "cost": 1 },
       "Rengar": { "icon": "assets/characters/tft18_rengar/tft18_rengar_square.png", "cost": 3 },
+      "Scuttlecrab": { "icon": "assets/characters/tft18_scuttlecrab/tft18_scuttlecrab_square.png", "cost": 2 },
       "Sentinel": { "icon": "assets/characters/tft18_sentinel/tft18_sentinel_square.png", "cost": 4 },
       "Sett": { "icon": "assets/characters/tft18_sett/tft18_sett_square.png", "cost": 4 },
+      "Shen": { "icon": "assets/characters/tft18_shen/tft18_shen_square.png", "cost": 2 },
       "Taric": { "icon": "assets/characters/tft18_taric/tft18_taric_square.png", "cost": 5 },
       "Teemo": { "icon": "assets/characters/tft18_teemo/tft18_teemo_square.png", "cost": 2 },
+      "Varus": { "icon": "assets/characters/tft18_varus/tft18_varus_square.png", "cost": 1 },
       "Veigar": { "icon": "assets/characters/tft18_veigar/tft18_veigar_square.png", "cost": 1 },
       "Vi": { "icon": "assets/characters/tft18_vi/tft18_vi_square.png", "cost": 3 },
       "Yorick": { "icon": "assets/characters/tft18_yorick/tft18_yorick_square.png", "cost": 1 },
+      "Yunara": { "icon": "assets/characters/tft18_yunara/tft18_yunara_square.png", "cost": 2 },
       "Zyra": { "icon": "assets/characters/tft18_zyra/tft18_zyra_square.png", "cost": 4 }
     },
     "items": {
       "Adaptive Helm": "assets/maps/tft/icons/items/hexcore/tft_item_adaptivehelm.png",
+      "Archangel's Staff": "assets/maps/tft/icons/items/hexcore/tft_item_archangelsstaff.png",
+      "Bloodthirster": "assets/maps/tft/icons/items/hexcore/tft_item_bloodthirster.png",
+      "Blue Buff": "assets/maps/tft/icons/items/hexcore/tft_item_bluebuff.png",
+      "Bramble Vest": "assets/maps/tft/icons/items/hexcore/tft_item_bramblevest.png",
+      "Brawler Emblem": "assets/maps/particles/tft/item_icons/traits/spatula/set18/tft18_emblem_brawler.png",
       "Crownguard": "assets/maps/tft/icons/items/hexcore/tft_item_crownguard.png",
       "Edge of Night": "assets/maps/tft/icons/items/hexcore/tft_item_guardianangel.png",
+      "Flickerblades": "assets/maps/tft/icons/items/hexcore/tft_item_artifact_navoriflickerplade.png",
       "Gargoyle Stoneplate": "assets/maps/tft/icons/items/hexcore/tft_item_gargoylestoneplate.png",
+      "Giant Slayer": "assets/maps/tft/icons/items/hexcore/tft_item_madredsbloodrazor.png",
       "Guinsoo's Rageblade": "assets/maps/tft/icons/items/hexcore/tft_item_guinsoosrageblade.png",
       "Hand of Justice": "assets/maps/tft/icons/items/hexcore/tft_item_unstableconcoction.png",
+      "Hellfire Hatchet": "assets/maps/tft/icons/items/hexcore/tft_item_artifact_hellfirehatchet.png",
       "Infinity Edge": "assets/maps/tft/icons/items/hexcore/tft_item_infinityedge.png",
       "Invoker Emblem": "assets/maps/particles/tft/item_icons/traits/spatula/set18/tft18_emblem_invoker.png",
       "Jeweled Gauntlet": "assets/maps/tft/icons/items/hexcore/tft_item_jeweledgauntlet.png",
+      "Last Whisper": "assets/maps/tft/icons/items/hexcore/tft_item_lastwhisper.png",
       "Morellonomicon": "assets/maps/tft/icons/items/hexcore/tft_item_morellonomicon.png",
+      "Nashor's Tooth": "assets/maps/tft/icons/items/hexcore/tft_item_leviathan.png",
       "Protector's Vow": "assets/maps/tft/icons/items/hexcore/tft_item_frozenheart.png",
+      "Quicksilver": "assets/maps/tft/icons/items/hexcore/tft_item_quicksilver.png",
       "Rabadon's Deathcap": "assets/maps/tft/icons/items/hexcore/tft_item_rabadonsdeathcap.png",
       "Red Buff": "assets/maps/tft/icons/items/hexcore/tft_item_rapidfirecannon.png",
       "Spear of Shojin": "assets/maps/tft/icons/items/hexcore/tft_item_spearofshojin.png",
+      "Spellweaver Emblem": "assets/maps/particles/tft/item_icons/traits/spatula/set18/tft18_emblem_spellweaver.png",
       "Spirit Visage": "assets/maps/tft/icons/items/hexcore/tft_item_spiritvisagerr.png",
+      "Sterak's Gage": "assets/maps/tft/icons/items/hexcore/tft_item_steraksgage.png",
       "Striker's Flail": "assets/maps/tft/icons/items/hexcore/tft_item_powergauntlet.png",
       "Titan's Resolve": "assets/maps/tft/icons/items/hexcore/tft_item_titansresolve.png",
+      "Vanguard Emblem": "assets/maps/particles/tft/item_icons/traits/spatula/set18/tft18_emblem_vanguard.png",
       "Void Staff": "assets/maps/tft/icons/items/hexcore/tft_item_voidstaff.png",
-      "Warmog's Armor": "assets/maps/tft/icons/items/hexcore/tft_item_warmogsarmor.png"
+      "Warmog's Armor": "assets/maps/tft/icons/items/hexcore/tft_item_warmogsarmor.png",
+      "Wit's End": "assets/maps/tft/icons/items/hexcore/tft_item_artifact_witsend.png"
     },
     "augments": {
-      "Baron's Lair": "assets/maps/tft/icons/augments/hexcore/thebaronslair_iii.png",
-      "Bronze for Life": "assets/maps/tft/icons/augments/hexcore/bronzeforlife_ii.png",
-      "Cooking Pot": "assets/maps/tft/icons/augments/hexcore/cookingpot_ii.png",
-      "Soul Awakening": "assets/maps/tft/icons/augments/hexcore/awakenedsoul_iii.png"
+      "Baron's Lair": { "icon": "assets/maps/tft/icons/augments/hexcore/thebaronslair_iii.png", "rarity": "Prismatic" },
+      "Bodyguard Training": { "icon": "assets/maps/tft/icons/augments/hexcore/bodyguardstraining_ii.png", "rarity": "Gold" },
+      "Bronze For Life I": { "icon": "assets/maps/tft/icons/augments/hexcore/bronzeforlife_ii.png", "rarity": "Gold" },
+      "Bronze For Life II": { "icon": "assets/maps/tft/icons/augments/hexcore/bronzeforlife_iii.png", "rarity": "Prismatic" },
+      "Comeback Story": { "icon": "assets/maps/tft/icons/augments/hexcore/comebackstory_iii.png", "rarity": "Prismatic" },
+      "Cooking Pot": { "icon": "assets/maps/tft/icons/augments/hexcore/cookingpot_ii.png", "rarity": "Gold" },
+      "Cybernetic Uplink": { "icon": "assets/maps/tft/icons/augments/hexcore/cybernetic-uplink-ii.png", "rarity": "Gold" },
+      "Deadlier Caps": { "icon": "assets/maps/tft/icons/augments/hexcore/deadliercaps_ii.png", "rarity": "Prismatic" },
+      "Forged In Strength": { "icon": "assets/maps/tft/icons/augments/hexcore/forgedinstrength_iii.png", "rarity": "Prismatic" },
+      "Frontline Foundation": { "icon": "assets/maps/tft/icons/augments/hexcore/frontlinefoundation_ii.png", "rarity": "Gold" },
+      "Glass Cannon I": { "icon": "assets/maps/tft/icons/augments/hexcore/glasscannon_i.png", "rarity": "Silver" },
+      "Group Hug I": { "icon": "assets/maps/tft/icons/augments/hexcore/grouphug1_i.png", "rarity": "Silver" },
+      "Group Hug II": { "icon": "assets/maps/tft/icons/augments/hexcore/grouphug2_ii.png", "rarity": "Gold" },
+      "Heroic Grab Bag": { "icon": "assets/maps/tft/icons/augments/hexcore/heroic-grab-bag-ii.png", "rarity": "Gold" },
+      "Jeweled Lotus I": { "icon": "assets/maps/tft/icons/augments/hexcore/jeweled-lotus-ii.png", "rarity": "Gold" },
+      "Jeweled Lotus II": { "icon": "assets/maps/tft/icons/augments/hexcore/jeweled-lotus-iii.png", "rarity": "Prismatic" },
+      "Latent Forge": { "icon": "assets/maps/tft/icons/augments/hexcore/long-time-crafting-i.png", "rarity": "Silver" },
+      "Living Forge": { "icon": "assets/maps/tft/icons/augments/hexcore/living-forge-iii.png", "rarity": "Prismatic" },
+      "NO SCOUT NO PIVOT": { "icon": "assets/maps/tft/icons/augments/hexcore/noscoutnopivot_ii.png", "rarity": "Gold" },
+      "Nesting Anvils": { "icon": null, "rarity": "Prismatic" },
+      "Omega Riftbeast": { "icon": null, "rarity": "Gold" },
+      "Pandora's Bench": { "icon": "assets/maps/tft/icons/augments/hexcore/pandoras-bench-ii.png", "rarity": "Gold" },
+      "Portable Forge": { "icon": "assets/maps/tft/icons/augments/hexcore/portableforge2.png", "rarity": "Gold" },
+      "Radiant Relics": { "icon": "assets/maps/tft/icons/augments/hexcore/radiantrelic-iii.png", "rarity": "Prismatic" },
+      "Solo Plate": { "icon": "assets/maps/tft/icons/augments/hexcore/soloplate_ii.png", "rarity": "Gold" },
+      "Soul Awakening": { "icon": "assets/maps/tft/icons/augments/hexcore/awakenedsoul_iii.png", "rarity": "Prismatic" },
+      "Staffsmith": { "icon": "assets/maps/tft/icons/augments/hexcore/rodsmith_ii.png", "rarity": "Gold" },
+      "Trade Sector": { "icon": "assets/maps/tft/icons/augments/hexcore/trade2.png", "rarity": "Gold" },
+      "Verticality II": { "icon": null, "rarity": "Gold" },
+      "Verticality III": { "icon": null, "rarity": "Prismatic" },
+      "Wand Overflow": { "icon": "assets/maps/tft/icons/augments/hexcore/wandoverflow_iii.png", "rarity": "Prismatic" },
+      "Worth the Wait II": { "icon": "assets/maps/tft/icons/augments/hexcore/worththewait_iii.png", "rarity": "Prismatic" }
     }
   }
 }

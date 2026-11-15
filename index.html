@@ -133,17 +133,66 @@ h3{font-family:var(--display);font-weight:700;font-size:21px;margin:0 0 4px;lett
 .build .note{grid-column:2;font-size:14px;color:var(--bark-soft);margin:0}
 .group-ico{--s:48px;width:48px;height:48px;border-radius:10px;border:2px dashed var(--line);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--bark-soft);grid-row:1/3}
 
-/* Augments */
-.augs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px}
-.aug{--s:58px;width:96px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:13px;line-height:1.25;font-weight:700}
-.aug .ico{width:58px;height:58px;border-radius:14px;background:var(--bark);display:grid;place-items:center;overflow:hidden}
-.aug .ico img{width:48px;height:48px}
-.aug .ico.txt{background:var(--tint);border:2px dashed var(--fam);color:var(--fam);font-family:var(--display);font-size:22px}
+/* Augment priority */
 .prio{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .prio li{display:flex;align-items:center;gap:8px}
 .prio li span{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--lichen);font-size:14px;font-weight:700}
 .prio li:first-child span{background:var(--fam);border-color:var(--fam);color:#fff}
 .prio li + li::before{content:"→";color:var(--bark-soft);font-weight:700}
+
+/* Hex board: 4 rows x 7, front row (enemy side) on top, odd rows shifted half a hex. */
+.pos{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px 32px;align-items:start}
+.hexboard{position:relative;isolation:isolate;max-width:600px;padding:22px 0 4px}
+.hexboard .side{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bark-soft)}
+.hexboard .side::after{content:"↑ enemy";font-weight:400;letter-spacing:0;text-transform:none}
+.hexboard .side.back{position:static;margin-top:10px}
+.hexboard .side.back::after{content:none}
+.hrow{display:flex}
+.hrow + .hrow{margin-top:-3.85%}
+.hrow.odd{padding-left:6.667%}
+.hex{--hexbg:#D9E1D5;position:relative;flex:none;width:13.333%;aspect-ratio:.866}
+.hex::before,.hex .hin{content:"";position:absolute;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.hex::before{inset:3%;background:var(--hexbg)}
+.hex.u{--hexbg:var(--cost)}
+.hex.u::before{inset:0}
+.hex.cost-1{--cost:var(--c1)} .hex.cost-2{--cost:var(--c2)} .hex.cost-3{--cost:var(--c3)} .hex.cost-4{--cost:var(--c4)} .hex.cost-5{--cost:var(--c5)}
+.hex.u.none{--hexbg:var(--line)}
+.hex.u.none .hin{background:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--bark-soft)}
+.hex .hin{inset:7%;background:var(--bark);overflow:hidden}
+.hex .hin img{width:100%;height:100%;object-fit:cover}
+.hex .hin .fb{display:grid;place-items:center;height:100%;color:#fff;font-family:var(--display);font-weight:800}
+.hex.carry{--hexbg:var(--fam)}
+.hex.carry::after{content:"";position:absolute;inset:-6%;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--tint);z-index:-1}
+.hex .hstars{position:absolute;top:-2%;left:0;right:0;text-align:center;font-size:clamp(9px,1.3vw,13px);line-height:1;color:var(--star);text-shadow:0 0 3px #fff,0 0 3px #fff;z-index:1}
+.hex .hname{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);max-width:120%;padding:1px 6px;border-radius:999px;background:rgba(35,48,43,.82);color:#fff;font-size:clamp(9px,1.15vw,12px);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:1}
+.hex.carry .hname{background:var(--fam)}
+.hex .hitems{position:absolute;left:0;right:0;bottom:6%;display:flex;justify-content:center;gap:2%;z-index:1}
+.hex .hitems .it{--s:auto;width:27%;height:auto;aspect-ratio:1;border-radius:4px;border:1px solid #fff}
+.hexboard.mini .hname,.hexboard.mini .hstars{display:none}
+.hexboard.mini{padding-top:18px;max-width:none}
+.hexboard.mini .side{font-size:11px}
+.pos-notes{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.pos-notes li{position:relative;padding-left:26px;font-size:15px}
+.pos-notes li::before{content:counter(n);counter-increment:n;position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:var(--fam);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.pos-notes{counter-reset:n}
+
+/* Tier lists */
+.tiers{display:grid;gap:10px}
+.tier{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;padding:10px;border-radius:12px;background:var(--lichen)}
+.tl{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:22px;color:#fff}
+.t-S{background:#B5402A} .t-A{background:#A06D0E} .t-B{background:#3F7F5F}
+.tier ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 8px}
+.tile{width:76px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:12px;line-height:1.2;font-weight:700}
+.tile .it{--s:40px;border-radius:8px}
+.tile .it.txt{width:40px;padding:0;font-size:14px;font-family:var(--display);font-weight:800}
+.tile.aug{width:86px}
+.tile .ico{width:44px;height:44px;border-radius:10px;background:var(--bark);display:grid;place-items:center;overflow:hidden}
+.tile .ico img{width:38px;height:38px}
+.tile .ico.txt{background:var(--tint);border:2px dashed var(--fam);color:var(--fam);font-family:var(--display);font-size:16px}
+.tile .rar{font-weight:400;font-size:11px;color:var(--bark-soft);display:flex;align-items:center;gap:4px}
+.tile .rar::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--r)}
+.rar.Silver{--r:#97A3AB} .rar.Gold{--r:#D0A626} .rar.Prismatic{--r:linear-gradient(135deg,#7FD6E8,#C59BF0,#F2B8C6)}
+.tier-key{margin:12px 0 0;font-size:13px;color:var(--bark-soft)}
 
 /* Leveling track */
 .track ol{list-style:none;margin:0;padding:10px 0 0;display:flex;position:relative}
@@ -163,6 +212,8 @@ h3{font-family:var(--display);font-weight:700;font-size:21px;margin:0 0 4px;lett
 .op h4 em{font-style:normal;font-family:var(--body);font-size:12px;font-weight:700;color:#fff;background:var(--fam);padding:2px 8px;border-radius:999px;white-space:nowrap;align-self:center}
 .op .faces{display:flex;gap:6px;margin:0 0 12px}
 .op .faces .pt{--s:40px;border-width:2px;border-radius:8px}
+.op .hexboard{margin:0 0 6px}
+.op-units{margin:0 0 12px;font-size:13px;font-weight:700;color:var(--bark-soft)}
 .op dl{margin:0;display:grid;gap:8px;font-size:15px}
 .op dt{font-weight:700;font-size:13px;color:var(--bark-soft)}
 .op dd{margin:0}
@@ -187,6 +238,14 @@ footer p{margin:0 0 8px}
   .stat{grid-column:1/-1}
   .stat div{text-align:left}
   .grid2{grid-template-columns:1fr;gap:0}
+  .pos{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .hex .hitems{display:none}
+  .tile{width:68px}
+  .tile.aug{width:76px}
+  .tier{grid-template-columns:34px 1fr;gap:8px}
+  .tl{width:34px;height:34px;font-size:18px;border-radius:8px}
 }
 @media (max-width:820px){
   .wrap{padding:0 16px}
@@ -287,10 +346,50 @@ function unitTile(c, entry){
 }
 
 function augment(name){
-  const p = ICONS.augments[name];
-  return `<li class="aug">${p
-    ? `<span class="ico" data-fb="${esc(initials(name))}"><img src="${src(p)}" alt="" loading="lazy" width="48" height="48"></span>`
-    : `<span class="ico txt" aria-hidden="true">${esc(initials(name))}</span>`}${esc(name)}</li>`;
+  const a = ICONS.augments[name] || {};
+  return `<li class="tile aug">${a.icon
+    ? `<span class="ico" data-fb="${esc(initials(name))}"><img src="${src(a.icon)}" alt="" loading="lazy" width="38" height="38"></span>`
+    : `<span class="ico txt" aria-hidden="true">${esc(initials(name))}</span>`}${esc(name)}${a.rarity ? `<span class="rar ${esc(a.rarity)}">${esc(a.rarity)}</span>` : ''}</li>`;
+}
+const itemTile = name => `<li class="tile">${ICONS.items[name] ? item(name, false) : `<span class="it txt" aria-hidden="true">${esc(initials(name))}</span>`}${esc(name)}</li>`;
+
+const TIER_TEXT = {S: 'Take first', A: 'Strong pick', B: 'Fine if nothing better'};
+function tierList(tiers, tile, label){
+  return `<div class="tiers">${['S','A','B'].filter(t => (tiers[t]||[]).length).map(t =>
+    `<div class="tier"><span class="tl t-${t}" title="${TIER_TEXT[t]}">${t}<span class="sr"> tier: ${TIER_TEXT[t]}</span></span>
+      <ul aria-label="${esc(label)}, ${t} tier">${tiers[t].map(tile).join('')}</ul></div>`).join('')}</div>
+    <p class="tier-key">S: take first · A: strong pick · B: fine if nothing better shows</p>`;
+}
+
+// Hex board. units: [[label, row, col], ...]; row 0 is the front row.
+function hexBoard(c, units, mini=false){
+  const at = {};
+  units.forEach(([label, r, col]) => { at[r + ',' + col] = label; });
+  const rowNames = ['Front row', 'Second row', 'Third row', 'Back row'];
+  const summary = rowNames.map((n, r) => {
+    const here = units.filter(u => u[1] === r).sort((a,b) => a[2]-b[2]).map(u => u[0].replace(/\s*★+/, ''));
+    return here.length ? `${n}: ${here.join(', ')}` : '';
+  }).filter(Boolean).join('. ');
+  const cell = label => {
+    if (!label) return '<span class="hex"></span>';
+    const name = champsIn(label)[0];
+    const ch = name && ICONS.champions[name];
+    const stars = (label.match(/★+/) || [''])[0];
+    const clean = label.replace(/\s*★+/, '');
+    const carry = name && name === c.carry;
+    const b = !mini && name && buildFor(c, name);
+    return `<span class="hex u ${ch ? 'cost-' + ch.cost : 'none'} ${carry ? 'carry' : ''}" title="${esc(clean)}">
+      <span class="hin" ${ch ? `data-fb="${esc(initials(name))}"` : ''}>${ch ? `<img src="${src(ch.icon)}" alt="" loading="lazy" width="64" height="64">` : '?'}</span>
+      ${stars ? `<span class="hstars">${stars}</span>` : ''}
+      <span class="hname">${esc(name || clean)}</span>
+      ${b ? `<span class="hitems">${b.core.map(n => item(n, false)).join('')}</span>` : ''}
+    </span>`;
+  };
+  return `<div class="hexboard ${mini ? 'mini' : ''}" role="img" aria-label="${esc(summary)}">
+    <span class="side" aria-hidden="true">Front</span>
+    ${[0,1,2,3].map(r => `<div class="hrow ${r % 2 ? 'odd' : ''}" aria-hidden="true">${[0,1,2,3,4,5,6].map(col => cell(at[r + ',' + col])).join('')}</div>`).join('')}
+    <span class="side back" aria-hidden="true">Back</span>
+  </div>`;
 }
 
 function detail(c){
@@ -326,6 +425,15 @@ function detail(c){
       </p>
     </div>
 
+    ${c.positioning ? `<div class="panel">
+      <h3>Where to stand</h3>
+      <p class="hint">Your final board placed hex by hex. The top row is closest to the enemy.</p>
+      <div class="pos">
+        ${hexBoard(c, c.positioning.units)}
+        <ol class="pos-notes">${c.positioning.notes.map(n => `<li>${esc(n)}</li>`).join('')}</ol>
+      </div>
+    </div>` : ''}
+
     <div class="grid2">
       <div class="panel">
         <h3>Items</h3>
@@ -342,12 +450,19 @@ function detail(c){
           </li>`; }).join('')}</ul>
       </div>
       <div class="panel">
-        <h3>Augments</h3>
-        <p class="hint">Take these when you see them.</p>
-        <ul class="augs">${c.augments.map(augment).join('')}</ul>
-        <h3 style="margin-top:24px">Augment priority</h3>
-        <ol class="prio" aria-label="Augment priority, most important first">${prio.map(p => `<li><span>${esc(p[0].toUpperCase() + p.slice(1))}</span></li>`).join('')}</ol>
+        <h3>Item tiers</h3>
+        <p class="hint">Which items to grab from carousels and anvils for this comp.</p>
+        ${tierList(c.itemTiers || {}, itemTile, 'Items')}
       </div>
+    </div>
+
+    <div class="panel">
+      <h3>Augment tiers</h3>
+      <p class="hint">The best augments for this comp. The colored tag shows the augment's rarity.</p>
+      ${tierList(c.augmentTiers || {}, augment, 'Augments')}
+      <h3 style="margin-top:24px">When nothing above shows up</h3>
+      <p class="hint">Pick by type in this order.</p>
+      <ol class="prio" aria-label="Augment priority, most important first">${prio.map(p => `<li><span>${esc(p[0].toUpperCase() + p.slice(1))}</span></li>`).join('')}</ol>
     </div>
 
     <div class="panel track">
@@ -359,11 +474,12 @@ function detail(c){
 
     <div class="panel">
       <h3>Best openers</h3>
-      <p class="hint">How to play stage 2 so you arrive with the right items.</p>
+      <p class="hint">How to play stage 2 so you arrive with the right items. Each board shows a suggested setup: tanks in front, ranged units in the back.</p>
       <div class="op-list">${c.openers.map(o => {
-        const faces = champsIn(o.board);
+        const faces = o.positioning ? [] : champsIn(o.board);
         return `<article class="op ${o.best ? 'best' : ''}">
         <h4>${esc(o.name)}${o.best ? '<em>Best</em>' : ''}</h4>
+        ${o.positioning ? hexBoard(c, o.positioning, true) + `<p class="op-units">${o.positioning.map(u => esc(u[0])).join(' · ')}</p>` : ''}
         ${faces.length ? `<div class="faces">${faces.map(f => portrait(f)).join('')}</div>` : ''}
         <dl><div><dt>Stage 2 board</dt><dd>${esc(o.board)}</dd></div>
         <div><dt>First slam</dt><dd>${esc(o.slam)}</dd></div>

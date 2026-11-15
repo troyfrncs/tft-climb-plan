@@ -4,9 +4,10 @@
 Run after editing meta.json:  python3 tools/icons.py
 Optional: python3 tools/icons.py path/to/en_us.json  (skip the ~25 MB download)
 
-It reads champion names from comps[].board / carry / items[].unit, item names
-from comps[].items[].core and families[].slamItems, and augment names from
-comps[].augments, then looks each one up in the current set's CDragon data.
+It reads champion names from comps[].board / carry / items[].unit / positioning
+and opener positioning, item names from comps[].items[].core, itemTiers and
+families[].slamItems, and augment names from comps[].augmentTiers, then looks
+each one up in the current set's CDragon data.
 Names it can't find are listed at the end and fall back to text on the page.
 """
 import json, re, sys, urllib.request
@@ -16,6 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 META = ROOT / "data" / "meta.json"
 CDRAGON = "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json"
 BASE = "https://raw.communitydragon.org/latest/game/"
+# Augment tier tags in CDragon data.
+RARITY = {"{d11fd6d5}": "Silver", "{ce1fd21c}": "Gold", "{cf1fd3af}": "Prismatic"}
 
 
 def png(path):
@@ -60,15 +63,16 @@ def main():
             if icon:
                 champs[c["name"]] = {"icon": icon, "cost": c["cost"]}
 
-    def lookup(pool_ids, name):
+    def find(pool_ids, name):
         want = name.lower()
         hits = [items_by_api[a] for a in pool_ids if a in items_by_api
                 and items_by_api[a]["name"].lower() == want]
-        hits.sort(key=lambda i: (not i["apiName"].startswith("TFT"), i["apiName"]))
-        for h in hits:
-            if png(h.get("icon")):
-                return png(h["icon"])
-        return None
+        hits.sort(key=lambda i: (not png(i.get("icon")), not i["apiName"].startswith("TFT"), i["apiName"]))
+        return hits[0] if hits else None
+
+    def lookup(pool_ids, name):
+        h = find(pool_ids, name)
+        return png(h.get("icon")) if h else None
 
     # Collect names used in the content.
     unit_text, item_names, aug_names = [], set(), set()
@@ -77,9 +81,14 @@ def main():
     for c in meta["comps"]:
         unit_text += c["board"] + [c["carry"]] + [i["unit"] for i in c["items"]]
         unit_text += [o["board"] for o in c.get("openers", [])]
+        unit_text += [u[0] for u in c.get("positioning", {}).get("units", [])]
+        unit_text += [u[0] for o in c.get("openers", []) for u in o.get("positioning", [])]
         for i in c["items"]:
             item_names.update(i.get("core", []))
-        aug_names.update(c["augments"])
+        for tier in c.get("itemTiers", {}).values():
+            item_names.update(tier)
+        for tier in c.get("augmentTiers", {}).values():
+            aug_names.update(tier)
 
     blob = " | ".join(unit_text)
     used_champs = {n: v for n, v in champs.items()
@@ -92,8 +101,14 @@ def main():
         (icons["items"].__setitem__(n, p) if p else missing.append(("item", n)))
     for n in sorted(aug_names):
         # "Bronze for Life" matches "Bronze For Life I" when there's no exact name.
-        p = lookup(set_data["augments"], n) or lookup(set_data["augments"], n + " I")
-        (icons["augments"].__setitem__(n, p) if p else missing.append(("augment", n)))
+        h = find(set_data["augments"], n) or find(set_data["augments"], n + " I")
+        if not h:
+            missing.append(("augment", n))
+            continue
+        rarity = next((RARITY[t] for t in h.get("tags", []) if t in RARITY), None)
+        icons["augments"][n] = {"icon": png(h.get("icon")), "rarity": rarity}
+        if not icons["augments"][n]["icon"]:
+            missing.append(("augment", n))
 
     meta["icons"] = icons
     META.write_text(dump(meta) + "\n", encoding="utf-8")
