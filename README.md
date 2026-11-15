@@ -7,7 +7,7 @@ It's a reference to read between games. It doesn't connect to the game or read l
 ## How it works
 
 - `index.html`: the whole app (HTML, CSS and JS in one file, no build step).
-- `data/meta.json`: everything the page shows. To update the comps, edit only this file.
+- `data/meta.json`: everything the page shows. To update the comps, edit this file, then run `python3 tools/icons.py` to refresh the champion, item and augment images.
 
 To run it locally:
 
@@ -21,4 +21,4 @@ Then open http://localhost:8000.
 
 A scheduled Claude task checks for new TFT patches. When one comes out, it researches the new meta, rewrites `data/meta.json` and pushes the change. When a new set launches (Set 19 on 1 Dec 2026), it replaces all four comps.
 
-Not endorsed by Riot Games. Teamfight Tactics is a trademark of Riot Games, Inc.
+Game images are loaded from CommunityDragon. TFT Climbing Plan isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.

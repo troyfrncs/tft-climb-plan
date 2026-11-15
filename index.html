@@ -6,29 +6,47 @@
 <title>TFT Climbing Plan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://raw.communitydragon.org" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
 <style>
 :root{
   --lichen:#E9EEE6; --paper:#F7F9F4; --bark:#23302B; --bark-soft:#56655E;
   --line:#C9D3C6; --ad:#A8701A; --ad-tint:#F3E6CC; --ap:#7A4BA8; --ap-tint:#E9DEF4;
-  --spore:#2E7D6B;
+  --spore:#2E7D6B; --star:#B8860B;
+  --c1:#8A938E; --c2:#1E9E6E; --c3:#2A74C2; --c4:#A13FC2; --c5:#D19A1E;
   --display:"Bricolage Grotesque", system-ui, sans-serif;
   --body:"Atkinson Hyperlegible", system-ui, sans-serif;
 }
 *{box-sizing:border-box}
 html{background:var(--lichen);color:var(--bark)}
-body{margin:0;font-family:var(--body);font-size:17px;line-height:1.55}
+body{margin:0;font-family:var(--body);font-size:17px;line-height:1.55;background:var(--lichen)}
 a{color:inherit}
+img{display:block}
 :focus-visible{outline:3px solid var(--spore);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* Header */
+/* ---------- Icons ---------- */
+/* Champion portrait: square with a cost-colored frame, like the in-game shop. */
+.pt{--s:56px;--cost:var(--c1);position:relative;flex:none;width:var(--s);height:var(--s);border-radius:10px;border:3px solid var(--cost);background:var(--bark);overflow:hidden;display:grid;place-items:center}
+.pt img{width:100%;height:100%;object-fit:cover}
+.pt.cost-1{--cost:var(--c1)} .pt.cost-2{--cost:var(--c2)} .pt.cost-3{--cost:var(--c3)} .pt.cost-4{--cost:var(--c4)} .pt.cost-5{--cost:var(--c5)}
+.pt.none{background:var(--paper);border-style:dashed;border-color:var(--line);color:var(--bark-soft);font-family:var(--display);font-weight:800;font-size:calc(var(--s) * .38)}
+.pt .fb,.it .fb,.aug .fb{font-family:var(--display);font-weight:800;color:#fff;font-size:calc(var(--s) * .34);letter-spacing:-.02em}
+/* Item icon: small rounded square. */
+.it{--s:26px;flex:none;width:var(--s);height:var(--s);border-radius:6px;overflow:hidden;background:var(--bark);border:1px solid rgba(0,0,0,.25);display:grid;place-items:center}
+.it img{width:100%;height:100%}
+.it.txt{width:auto;padding:0 8px;background:var(--paper);border-color:var(--line);font-size:12px;font-weight:700;color:var(--bark)}
+.items-row{display:flex;gap:3px;flex-wrap:wrap}
+.cost-key{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;color:var(--bark-soft);margin:14px 0 0}
+.cost-key i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+
+/* ---------- Header ---------- */
 .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;padding:28px 0 8px}
 .top h1{font-family:var(--display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
 .patch{font-size:15px;color:var(--bark-soft)}
 .patch strong{color:var(--bark)}
 
-/* Player strip */
 .player{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:center;padding:18px 0 26px;border-bottom:1px solid var(--line)}
 .player .who{font-family:var(--display);font-weight:700;font-size:20px}
 .player .who a{text-decoration-color:var(--line);text-underline-offset:4px}
@@ -39,72 +57,116 @@ a{color:inherit}
 .player dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
 .leaks{grid-column:1/-1;font-size:15px;color:var(--bark-soft);margin:6px 0 0}
 
-/* Matrix hero */
+/* ---------- Comp picker ---------- */
 .intro{padding:40px 0 18px;max-width:62ch}
 .intro h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,5.4vw,58px);line-height:1.02;letter-spacing:-.025em;margin:0 0 14px}
 .intro p{margin:0;color:var(--bark-soft)}
-.matrix{display:grid;grid-template-columns:150px 1fr 1fr;gap:0;margin:18px 0 8px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.matrix{display:grid;grid-template-columns:170px 1fr 1fr;margin:18px 0 8px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
 .matrix .colhead{padding:14px 18px;font-size:15px;color:var(--bark-soft);border-bottom:1px solid var(--line)}
+.matrix .colhead b{display:block;color:var(--bark);font-family:var(--display);font-size:16px}
 .matrix .corner{border-bottom:1px solid var(--line)}
-.matrix .rowhead{padding:18px;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.15;display:flex;flex-direction:column;justify-content:center;gap:6px}
-.matrix .rowhead small{font-family:var(--body);font-weight:400;font-size:14px;color:var(--bark-soft)}
-.row-ad .rowhead{color:var(--ad)}
-.row-ap .rowhead{color:var(--ap)}
+.matrix .rowhead{padding:18px;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.15;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.matrix .rowhead small{font-family:var(--body);font-weight:400;font-size:13px;color:var(--bark-soft)}
 .row-ad{--fam:var(--ad);--tint:var(--ad-tint)}
 .row-ap{--fam:var(--ap);--tint:var(--ap-tint)}
+.row-ad.rowhead,.row-ap.rowhead{color:var(--fam)}
 .matrix > .row-ad.rowhead,.matrix > .row-ad.cell{border-bottom:1px solid var(--line)}
-.cell{appearance:none;border:0;border-left:1px solid var(--line);background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:22px 22px 20px;display:flex;flex-direction:column;gap:10px;min-height:168px;position:relative;transition:background-color .18s}
+.cell{appearance:none;border:0;border-left:1px solid var(--line);background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:20px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto 1fr auto;gap:6px 16px;min-height:176px;position:relative;transition:background-color .18s}
 .cell:hover{background:color-mix(in srgb,var(--tint) 55%,transparent)}
 .cell[aria-pressed="true"]{background:var(--tint)}
 .cell[aria-pressed="true"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--fam)}
-.cell .name{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,27px);line-height:1.08;letter-spacing:-.015em}
-.cell .meta{font-size:14px;color:var(--bark-soft)}
-.cell .nums{margin-top:auto;display:flex;gap:18px;font-variant-numeric:tabular-nums;font-size:15px}
-.cell .nums b{font-family:var(--display);font-size:22px;color:var(--fam)}
+.cell .pt{--s:68px;grid-row:1/3}
+.cell .name{font-family:var(--display);font-weight:700;font-size:clamp(19px,2.2vw,25px);line-height:1.08;letter-spacing:-.015em}
+.cell .meta{font-size:14px;color:var(--bark-soft);align-self:start}
+.cell .foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:6px}
+.cell .nums{display:flex;gap:16px;font-variant-numeric:tabular-nums;font-size:14px}
+.cell .nums b{font-family:var(--display);font-size:21px;color:var(--fam)}
 .steps{margin:22px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
 .steps li{counter-increment:s;font-size:15px;color:var(--bark-soft);padding-top:12px;border-top:2px solid var(--bark)}
 .steps li::before{content:counter(s);display:block;font-family:var(--display);font-weight:800;font-size:20px;color:var(--bark);margin-bottom:4px}
 
-/* Comp detail */
+/* ---------- Comp detail ---------- */
 .comp{margin:56px 0 0;padding:34px 0 0;border-top:1px solid var(--line)}
-.comp-head{display:grid;grid-template-columns:1fr auto;gap:18px 32px;align-items:end}
+.comp-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:center}
+.spot{display:flex;flex-direction:column;align-items:center;gap:8px}
+.spot .pt{--s:112px;border-width:4px;border-radius:16px;box-shadow:0 0 0 4px var(--tint)}
+.spot .it{--s:30px}
+.spot .lbl{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fam)}
 .comp-head .tag{font-size:15px;font-weight:700;color:var(--fam)}
-.comp-head h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.2vw,46px);line-height:1.03;letter-spacing:-.02em;margin:4px 0 10px}
-.comp-head p{margin:0;max-width:60ch}
-.stat{display:flex;gap:26px}
+.comp-head h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,4vw,44px);line-height:1.03;letter-spacing:-.02em;margin:4px 0 10px}
+.comp-head p{margin:0;max-width:56ch}
+.stat{display:flex;gap:24px}
 .stat div{text-align:right}
-.stat b{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--fam);font-variant-numeric:tabular-nums}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:32px;line-height:1;color:var(--fam);font-variant-numeric:tabular-nums}
 .stat span{font-size:14px;color:var(--bark-soft)}
-.must{margin:22px 0 0;padding:14px 18px;border-left:5px solid var(--fam);background:var(--tint);border-radius:0 10px 10px 0;max-width:72ch}
-.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;margin-top:38px}
-h3{font-family:var(--display);font-weight:700;font-size:21px;margin:0 0 14px;letter-spacing:-.01em}
-.board{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.board li{padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:15px}
-.board li.carry{border-color:var(--fam);background:var(--fam);color:#fff;font-weight:700}
-.augs{margin-top:26px}
-.augs p{margin:6px 0 0;font-size:15px;color:var(--bark-soft)}
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
-th{font-weight:700;width:30%}
-.track{margin-top:40px}
-.track ol{list-style:none;margin:0;padding:22px 0 0;display:flex;position:relative}
-.track ol::before{content:"";position:absolute;left:18px;right:18px;top:40px;height:3px;background:var(--line)}
+.must{margin:24px 0 0;padding:14px 18px;border-left:5px solid var(--fam);background:var(--tint);border-radius:0 10px 10px 0;max-width:76ch}
+
+h3{font-family:var(--display);font-weight:700;font-size:21px;margin:0 0 4px;letter-spacing:-.01em}
+.hint{margin:0 0 16px;font-size:14px;color:var(--bark-soft)}
+.panel{margin-top:30px;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+
+/* Final board: one tile per unit, items underneath, carry highlighted. */
+.board{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:18px 12px}
+.unit{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;position:relative}
+.unit .pt{--s:72px}
+.unit .alt{position:absolute;right:-8px;bottom:-8px;--s:32px;border-width:2px;border-radius:8px;box-shadow:0 0 0 2px var(--paper)}
+.unit .stars{height:16px;font-size:14px;line-height:16px;color:var(--star);letter-spacing:1px}
+.unit .uname{font-size:14px;line-height:1.25;font-weight:700}
+.unit .uname small{display:block;font-weight:400;color:var(--bark-soft);font-size:12px}
+.unit .items-row{justify-content:center;min-height:26px}
+.unit.carry .pt{box-shadow:0 0 0 3px var(--paper),0 0 0 6px var(--fam)}
+.unit.carry .badge{position:absolute;top:10px;left:50%;transform:translate(-50%,-50%);background:var(--fam);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;z-index:1;white-space:nowrap}
+.unit.carry .stars{visibility:hidden}
+
+.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
+.grid2 > .panel{margin-top:24px}
+
+/* Items per unit */
+.builds{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.build{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.build:last-child{border-bottom:0;padding-bottom:0}
+.build .pt{--s:48px;grid-row:1/3}
+.build .who{font-weight:700}
+.build .chips{display:flex;flex-wrap:wrap;gap:6px 10px;margin:4px 0}
+.build .chip{display:inline-flex;align-items:center;gap:6px;font-size:14px}
+.build .chip .it{--s:28px}
+.build .note{grid-column:2;font-size:14px;color:var(--bark-soft);margin:0}
+.group-ico{--s:48px;width:48px;height:48px;border-radius:10px;border:2px dashed var(--line);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--bark-soft);grid-row:1/3}
+
+/* Augments */
+.augs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px}
+.aug{--s:58px;width:96px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:13px;line-height:1.25;font-weight:700}
+.aug .ico{width:58px;height:58px;border-radius:14px;background:var(--bark);display:grid;place-items:center;overflow:hidden}
+.aug .ico img{width:48px;height:48px}
+.aug .ico.txt{background:var(--tint);border:2px dashed var(--fam);color:var(--fam);font-family:var(--display);font-size:22px}
+.prio{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.prio li{display:flex;align-items:center;gap:8px}
+.prio li span{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--lichen);font-size:14px;font-weight:700}
+.prio li:first-child span{background:var(--fam);border-color:var(--fam);color:#fff}
+.prio li + li::before{content:"→";color:var(--bark-soft);font-weight:700}
+
+/* Leveling track */
+.track ol{list-style:none;margin:0;padding:10px 0 0;display:flex;position:relative}
+.track ol::before{content:"";position:absolute;left:18px;right:18px;top:29px;height:3px;background:var(--line)}
 .track li{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:6px;position:relative;min-width:0}
 .track .lv{width:38px;height:38px;border-radius:50%;background:var(--paper);border:3px solid var(--fam);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:17px;position:relative;z-index:1}
 .track li.key .lv{background:var(--fam);color:#fff}
 .track .st{font-weight:700;font-variant-numeric:tabular-nums}
 .track .nt{font-size:13px;color:var(--bark-soft);padding-right:8px}
-.track > p{margin:14px 0 0;font-size:15px;color:var(--bark-soft)}
-.openers{margin-top:44px}
+.track > p{margin:16px 0 0;font-size:15px;color:var(--bark-soft)}
+
+/* Openers */
 .op-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.op{padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
-.op.best{border:2px solid var(--fam)}
+.op{padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--lichen)}
+.op.best{border:2px solid var(--fam);background:var(--paper)}
 .op h4{font-family:var(--display);font-weight:700;font-size:18px;margin:0 0 10px;display:flex;justify-content:space-between;gap:10px}
-.op h4 em{font-style:normal;font-family:var(--body);font-size:13px;font-weight:700;color:var(--fam);white-space:nowrap}
+.op h4 em{font-style:normal;font-family:var(--body);font-size:12px;font-weight:700;color:#fff;background:var(--fam);padding:2px 8px;border-radius:999px;white-space:nowrap;align-self:center}
+.op .faces{display:flex;gap:6px;margin:0 0 12px}
+.op .faces .pt{--s:40px;border-width:2px;border-radius:8px}
 .op dl{margin:0;display:grid;gap:8px;font-size:15px}
 .op dt{font-weight:700;font-size:13px;color:var(--bark-soft)}
 .op dd{margin:0}
-.tip{margin:34px 0 0;font-size:18px;max-width:66ch}
+.tip{margin:30px 0 0;font-size:18px;max-width:66ch}
 .tip strong{color:var(--fam)}
 
 /* Rules */
@@ -120,24 +182,40 @@ footer ul{margin:6px 0 0;padding-left:18px}
 footer p{margin:0 0 8px}
 .error{padding:60px 0;font-size:18px}
 
+@media (max-width:900px){
+  .comp-head{grid-template-columns:auto 1fr}
+  .stat{grid-column:1/-1}
+  .stat div{text-align:left}
+  .grid2{grid-template-columns:1fr;gap:0}
+}
 @media (max-width:820px){
+  .wrap{padding:0 16px}
   .matrix{grid-template-columns:1fr 1fr}
-  .matrix .corner{display:none}
-  .matrix .colhead{display:none}
-  .matrix .rowhead{grid-column:1/-1;padding:14px 18px 4px;border-bottom:0!important}
-  .cell{border-left:0;min-height:150px}
+  .matrix .corner,.matrix .colhead{display:none}
+  .matrix .rowhead{grid-column:1/-1;padding:14px 16px 4px;border-bottom:0!important;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .cell{border-left:0;min-height:0;padding:16px;grid-template-columns:1fr;grid-template-rows:auto}
+  .cell .pt{--s:52px;grid-row:auto}
   .cell + .cell{border-left:1px solid var(--line)}
   .cell .meta::before{content:attr(data-start) " · "}
+  .cell .foot{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr}
-  .comp-head,.grid2,footer{grid-template-columns:1fr}
-  .stat div{text-align:left}
+  footer{grid-template-columns:1fr}
   .player{grid-template-columns:1fr}
+  .panel{padding:18px 16px}
+  .spot .pt{--s:84px}
+  .board{grid-template-columns:repeat(auto-fill,minmax(84px,1fr))}
+  .unit .pt{--s:62px}
   .track ol{flex-wrap:wrap;row-gap:18px}
   .track ol::before{display:none}
   .track li{flex:0 0 33%}
-  .rules{padding:28px 22px}
+  .rules{padding:28px 20px}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:480px){
+  .comp-head{grid-template-columns:1fr}
+  .spot{flex-direction:row;align-items:center}
+  .spot .lbl{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -145,23 +223,90 @@ footer p{margin:0 0 8px}
 
 <script>
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let ICONS = {base:'', champions:{}, items:{}, augments:{}};
+const src = p => esc(ICONS.base + p);
+const initials = n => n.replace(/[^A-Za-z ]/g,'').split(/\s+/).filter(Boolean).map(w => w[0]).join('').slice(0,2).toUpperCase() || '?';
+
+// Champion names found in a free-text string, in order of appearance.
+function champsIn(text){
+  const names = Object.keys(ICONS.champions).sort((a,b) => b.length - a.length);
+  const hits = [];
+  let rest = text;
+  for (const n of names){
+    const re = new RegExp("(^|[^\\w'])" + n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + "(?![\\w'])");
+    const m = rest.match(re);
+    if (m){ hits.push([m.index, n]); rest = rest.replace(re, (all, pre) => pre + ' '.repeat(n.length)); }
+  }
+  return hits.sort((a,b) => a[0]-b[0]).map(h => h[1]);
+}
+
+function portrait(name, extra=''){
+  const c = name && ICONS.champions[name];
+  if (!c) return `<span class="pt none ${extra}" aria-hidden="true">?</span>`;
+  return `<span class="pt cost-${c.cost} ${extra}" data-fb="${esc(initials(name))}"><img src="${src(c.icon)}" alt="" loading="lazy" width="72" height="72"></span>`;
+}
+function item(name, alt=true){
+  const p = ICONS.items[name];
+  if (!p) return `<span class="it txt">${esc(name)}</span>`;
+  return `<span class="it" title="${esc(name)}" data-fb="${esc(initials(name))}"><img src="${src(p)}" alt="${alt ? esc(name) : ''}" loading="lazy" width="28" height="28"></span>`;
+}
+const itemRow = names => `<span class="items-row">${(names||[]).map(n => item(n)).join('')}</span>`;
+
+// Items rows for a unit: "Vi / Krug" matches both Vi and Krug.
+const buildFor = (c, name) => c.items.find(i => i.unit.split(/\s*\/\s*/).includes(name));
+const carryItems = c => (buildFor(c, c.carry) || c.items[0]).core;
 
 function compCell(c){
-  return `<button class="cell row-${c.family}" data-id="${c.id}" aria-pressed="false" aria-controls="detail">
+  return `<button class="cell row-${c.family}" data-id="${c.id}" aria-pressed="false" aria-controls="detail-slot">
+    ${portrait(c.carry)}
     <span class="name">${esc(c.name)}</span>
     <span class="meta" data-start="${c.start === 'strong' ? 'Strong start' : 'Weak start'}">${esc(c.style)} · ${esc(c.role)} · ${esc(c.difficulty)}</span>
-    <span class="nums"><span><b>${c.stats.avgPlace.toFixed(2)}</b> avg</span><span><b>${Math.round(c.stats.top4)}%</b> top 4</span></span>
+    <span class="foot">
+      ${itemRow(carryItems(c))}
+      <span class="nums"><span><b>${c.stats.avgPlace.toFixed(2)}</b> avg</span><span><b>${Math.round(c.stats.top4)}%</b> top 4</span></span>
+    </span>
   </button>`;
+}
+
+function unitTile(c, entry){
+  const names = champsIn(entry);
+  const main = names[0];
+  const stars = (entry.match(/★+/) || [''])[0];
+  const label = entry.replace(/\s*★+\s*/g, ' ').trim();
+  const isCarry = entry.startsWith(c.carry);
+  const b = main && buildFor(c, main);
+  const title = main && label.startsWith(main) ? main : label;
+  const sub = title === label ? '' : label.slice(main.length).replace(/^[\s,]+/, '');
+  return `<li class="unit ${isCarry ? 'carry' : ''}">
+    ${isCarry ? `<span class="badge">Carry${stars ? ' ' + stars : ''}</span>` : ''}
+    <span class="stars" aria-label="${stars ? stars.length + ' star' : ''}">${stars}</span>
+    <span style="position:relative">${portrait(main)}${names[1] ? portrait(names[1], 'alt') : ''}</span>
+    <span class="uname">${esc(title)}${sub ? `<small>${esc(sub)}</small>` : ''}</span>
+    ${b ? itemRow(b.core) : '<span class="items-row"></span>'}
+  </li>`;
+}
+
+function augment(name){
+  const p = ICONS.augments[name];
+  return `<li class="aug">${p
+    ? `<span class="ico" data-fb="${esc(initials(name))}"><img src="${src(p)}" alt="" loading="lazy" width="48" height="48"></span>`
+    : `<span class="ico txt" aria-hidden="true">${esc(initials(name))}</span>`}${esc(name)}</li>`;
 }
 
 function detail(c){
   const steps = c.leveling.steps.map(([lv, st, note]) =>
     `<li class="${note && /roll here/i.test(note) ? 'key' : ''}"><span class="lv">${esc(lv)}</span><span class="st">${esc(st)}</span>${note ? `<span class="nt">${esc(note)}</span>` : ''}</li>`).join('');
-  return `<section class="comp row-${c.family}" id="detail" aria-live="polite">
+  const prio = c.augmentOrder.split(/,?\s*then\s*/i).map(s => s.trim()).filter(Boolean);
+  return `<section class="comp row-${c.family}" id="detail" aria-labelledby="comp-title">
     <div class="comp-head">
+      <div class="spot">
+        <span class="lbl">Carry</span>
+        ${portrait(c.carry)}
+        ${itemRow(carryItems(c))}
+      </div>
       <div>
-        <span class="tag">${c.family === 'ad' ? 'AD' : 'AP'} · ${c.start === 'strong' ? 'Strong start' : 'Weak start'} · ${esc(c.style)}</span>
-        <h2>${esc(c.name)}</h2>
+        <span class="tag">${c.family === 'ad' ? 'AD' : 'AP'} · ${c.start === 'strong' ? 'Strong start' : 'Weak start'} · ${esc(c.style)} · ${esc(c.difficulty)}</span>
+        <h2 id="comp-title">${esc(c.name)}</h2>
         <p>${esc(c.summary)}</p>
       </div>
       <div class="stat">
@@ -172,36 +317,58 @@ function detail(c){
     </div>
     <p class="must"><strong>Needs:</strong> ${esc(c.mustHave)}</p>
 
+    <div class="panel">
+      <h3>Final board</h3>
+      <p class="hint">Your level 8–9 board. Items sit under the unit that holds them.</p>
+      <ul class="board">${c.board.map(u => unitTile(c, u)).join('')}</ul>
+      <p class="cost-key" aria-label="Frame color shows unit cost">Frame = cost:
+        ${[1,2,3,4,5].map(n => `<span><i style="background:var(--c${n})"></i>${n}</span>`).join('')}
+      </p>
+    </div>
+
     <div class="grid2">
-      <div>
-        <h3>Final board</h3>
-        <ul class="board">${c.board.map(u => `<li class="${u.startsWith(c.carry) ? 'carry' : ''}">${esc(u)}</li>`).join('')}</ul>
-        <div class="augs">
-          <h3>Augments</h3>
-          <ul class="board">${c.augments.map(a => `<li>${esc(a)}</li>`).join('')}</ul>
-          <p>Priority: ${esc(c.augmentOrder)}</p>
-        </div>
-      </div>
-      <div>
+      <div class="panel">
         <h3>Items</h3>
-        <table><tbody>${c.items.map(i => `<tr><th scope="row">${esc(i.unit)}</th><td>${esc(i.build)}</td></tr>`).join('')}</tbody></table>
+        <p class="hint">Build these first. The note says what else works.</p>
+        <ul class="builds">${c.items.map(i => {
+          const who = champsIn(i.unit)[0];
+          return `<li class="build">
+            ${who ? portrait(who) : `<span class="group-ico" aria-hidden="true">${esc(initials(i.unit))}</span>`}
+            <span class="who">${esc(i.unit)}</span>
+            <div>
+              <span class="chips">${(i.core||[]).map(n => `<span class="chip">${item(n, false)}${esc(n)}</span>`).join('')}</span>
+              <p class="note">${esc(i.build)}</p>
+            </div>
+          </li>`; }).join('')}</ul>
+      </div>
+      <div class="panel">
+        <h3>Augments</h3>
+        <p class="hint">Take these when you see them.</p>
+        <ul class="augs">${c.augments.map(augment).join('')}</ul>
+        <h3 style="margin-top:24px">Augment priority</h3>
+        <ol class="prio" aria-label="Augment priority, most important first">${prio.map(p => `<li><span>${esc(p[0].toUpperCase() + p.slice(1))}</span></li>`).join('')}</ol>
       </div>
     </div>
 
-    <div class="track">
+    <div class="panel track">
       <h3>When to level · ${esc(c.leveling.label)}</h3>
+      <p class="hint">Level on these stages. A filled circle means roll down here.</p>
       <ol aria-label="Level by stage">${steps}</ol>
       <p>${esc(c.leveling.note)}</p>
     </div>
 
-    <div class="openers">
+    <div class="panel">
       <h3>Best openers</h3>
-      <div class="op-list">${c.openers.map(o => `<article class="op ${o.best ? 'best' : ''}">
-        <h4>${esc(o.name)}${o.best ? '<em>Best opener</em>' : ''}</h4>
+      <p class="hint">How to play stage 2 so you arrive with the right items.</p>
+      <div class="op-list">${c.openers.map(o => {
+        const faces = champsIn(o.board);
+        return `<article class="op ${o.best ? 'best' : ''}">
+        <h4>${esc(o.name)}${o.best ? '<em>Best</em>' : ''}</h4>
+        ${faces.length ? `<div class="faces">${faces.map(f => portrait(f)).join('')}</div>` : ''}
         <dl><div><dt>Stage 2 board</dt><dd>${esc(o.board)}</dd></div>
         <div><dt>First slam</dt><dd>${esc(o.slam)}</dd></div>
         <div><dt>Take it when</dt><dd>${esc(o.when)}</dd></div></dl>
-      </article>`).join('')}</div>
+      </article>`; }).join('')}</div>
     </div>
 
     <p class="tip"><strong>Tip:</strong> ${esc(c.tip)}</p>
@@ -209,11 +376,12 @@ function detail(c){
 }
 
 function render(d){
+  ICONS = Object.assign(ICONS, d.icons || {});
   const byKey = (fam, start) => d.comps.find(c => c.family === fam && c.start === start);
   const p = d.player;
   const row = fam => {
     const f = d.families.find(x => x.id === fam);
-    return `<div class="rowhead row-${fam}">${esc(f.name)}<small>${esc(f.slams)}</small></div>
+    return `<div class="rowhead row-${fam}">${esc(f.name)}${itemRow(f.slamItems)}<small>${esc(f.slams)}</small></div>
       ${compCell(byKey(fam,'strong'))}${compCell(byKey(fam,'weak'))}`;
   };
   document.getElementById('app').innerHTML = `
@@ -234,17 +402,17 @@ function render(d){
 
   <section class="intro">
     <h2>Four comps. Your first item picks the row.</h2>
-    <p>Play only these until you leave Emerald. Each row shares items, so you can switch between its two comps mid-game without wasting anything.</p>
+    <p>Play only these until you leave Emerald. Each row shares items, so you can switch between its two comps mid-game without wasting anything. Pick a comp to see its board.</p>
   </section>
   <div class="matrix" role="group" aria-label="Pick a comp">
     <div class="corner"></div>
-    <div class="colhead">Strong start: win streak, healthy</div>
-    <div class="colhead">Weak start: losing, low HP or contested</div>
+    <div class="colhead"><b>Strong start</b>Win streak, healthy</div>
+    <div class="colhead"><b>Weak start</b>Losing, low HP or contested</div>
     ${row('ad')}${row('ap')}
   </div>
   <ol class="steps">${d.pickSteps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
 
-  <div id="detail-slot"></div>
+  <div id="detail-slot" aria-live="polite"></div>
 
   <section class="rules">
     <h2>Your five rules</h2>
@@ -255,7 +423,7 @@ function render(d){
   <footer>
     <div>
       <p>Comp stats: ${esc(d.dataWindow)}. ${esc(d.nextChange)}</p>
-      <p>Not endorsed by Riot Games. Teamfight Tactics is a trademark of Riot Games, Inc.</p>
+      <p>TFT Climbing Plan isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc. Game images via CommunityDragon.</p>
     </div>
     <div>Sources<ul>${d.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>: ${esc(s.used)}</li>`).join('')}</ul></div>
   </footer>`;
@@ -274,10 +442,18 @@ function render(d){
   select(location.hash.slice(1));
 }
 
+// If an image fails to load, show initials instead of a broken icon.
+document.addEventListener('error', e => {
+  const img = e.target;
+  if (img.tagName !== 'IMG') return;
+  const box = img.parentElement;
+  box.innerHTML = `<span class="fb">${esc(box.dataset.fb || '?')}</span>`;
+}, true);
+
 fetch('data/meta.json', {cache: 'no-cache'})
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(render)
-  .catch(() => { document.getElementById('app').innerHTML = '<p class="error">The comp data didn\'t load. Refresh the page; if it still fails, check that data/meta.json is in the repo.</p>'; });
+  .catch(err => { console.error(err); document.getElementById('app').innerHTML = '<p class="error">The comp data didn\'t load. Refresh the page; if it still fails, check that data/meta.json is in the repo.</p>'; });
 </script>
 </body>
 </html>
