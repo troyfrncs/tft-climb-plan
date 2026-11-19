@@ -1,9 +1,9 @@
 {
   "set": "18",
   "setName": "Enchanted Wilds",
-  "patch": "18.6B",
-  "updated": "2026-11-15",
-  "dataWindow": "Ranked games played 4–14 Nov 2026",
+  "patch": "18.7",
+  "updated": "2026-11-19",
+  "dataWindow": "Platinum+ ranked games on patch 18.7 (live 18 Nov 2026)",
   "nextChange": "Set 19 launches on 1 Dec 2026 and replaces every comp below.",
   "player": {
     "name": "777G0D",
@@ -39,8 +39,8 @@
       "style": "Fast 8",
       "role": "Main comp",
       "difficulty": "Hard",
-      "stats": { "avgPlace": 3.43, "top4": 70.7, "win": 22.4 },
-      "summary": "The strongest comp on the patch, and it builds on Elder Dragon, your best carry.",
+      "stats": { "avgPlace": 4.23, "top4": 55.1, "win": 12.7 },
+      "summary": "Still a top comp after the Riftbeast nerf in 18.7, and the most played one. It builds on Elder Dragon, your best carry.",
       "mustHave": "Guinsoo's + Edge of Night on Brambleback. Without both, play Master Yi reroll instead.",
       "carry": "Brambleback",
       "board": [
@@ -107,7 +107,7 @@
           "positioning": [["Diana", 0, 2], ["Rakan", 0, 3], ["Yorick", 0, 4], ["Rengar", 1, 0], ["Pebbles", 3, 1]]
         }
       ],
-      "tip": "You play nearly the same units every game, so item quality decides your placement. Spend carousels and augments on finishing Brambleback's items.",
+      "tip": "You play nearly the same units every game, so item quality decides your placement. Spend carousels and augments on finishing Brambleback's items. Krug is a Summoner in 18.7.",
       "positioning": {
         "units": [
           ["Krug ★★★", 0, 3],
@@ -155,9 +155,9 @@
       "style": "3-cost reroll",
       "role": "AD backup",
       "difficulty": "Easy",
-      "stats": { "avgPlace": 4.24, "top4": 55.0, "win": 12.3 },
+      "stats": { "avgPlace": 4.24, "top4": 55.3, "win": 12.1 },
       "summary": "Your backup when you have AD items but a weak start or no Edge of Night.",
-      "mustHave": "An artifact, a Brawler Emblem, or a Rengar no one else is building. It's the most-played top-tier comp (4.7%), so scout first.",
+      "mustHave": "An artifact, a Brawler Emblem, or a Rengar no one else is building. It's a popular comp, so scout first.",
       "carry": "Master Yi",
       "board": ["Master Yi ★★★", "Kog'Maw ★★★", "Rengar", "A 3-star frontliner", "Nidalee", "Krug", "Vi"],
       "items": [
@@ -250,61 +250,49 @@
       }
     },
     {
-      "id": "ahri",
-      "name": "Invoker Ahri flex",
+      "id": "morgana",
+      "name": "Vanguard Morgana & Alune",
       "family": "ap",
       "start": "strong",
-      "style": "Fast 8/9",
+      "style": "Fast 9",
       "role": "AP main",
-      "difficulty": "Medium",
-      "stats": { "avgPlace": 4.35, "top4": 53.6, "win": 12.2 },
-      "summary": "Your AP comp for strong starts. An Invoker Emblem on Ahri makes it one of the best comps in the game.",
-      "mustHave": "Lots of good AP items, and a path to level 9. Dying at 8 usually means 4th at best.",
-      "carry": "Ahri",
-      "board": [
-        "Ahri ★★",
-        "Morgana ★★",
-        "Sentinel or Sett ★★",
-        "Zyra or a 4-cost frontliner",
-        "Karma",
-        "Krug",
-        "Alune, Taric, Gnar at 9"
-      ],
+      "difficulty": "Hard",
+      "stats": { "avgPlace": 4.19, "top4": 54.2, "win": 20.1 },
+      "summary": "Your AP comp for strong starts. It replaces Invoker Ahri, which fell to B tier. It wins a lot when it reaches 9.",
+      "mustHave": "Jeweled Gauntlet + Shojin for Alune, Void Staff + Morellonomicon for Morgana, and enough gold for level 9.",
+      "carry": "Alune",
+      "board": ["Alune ★★", "Morgana ★★", "Sentinel ★★", "Taric", "Diana", "Elise", "Cassiopeia", "Elder Dragon at 9"],
       "items": [
         {
-          "unit": "Ahri",
-          "core": ["Invoker Emblem", "Jeweled Gauntlet", "Striker's Flail"],
-          "build": "Invoker Emblem, Jeweled Gauntlet, Striker's, Shojin / Blue Buff, Nashor's"
+          "unit": "Alune",
+          "core": ["Jeweled Gauntlet", "Spear of Shojin", "Striker's Flail"],
+          "build": "Jeweled Gauntlet, Shojin, then Striker's or Nashor's"
         },
         {
           "unit": "Morgana",
-          "core": ["Void Staff", "Morellonomicon", "Rabadon's Deathcap"],
-          "build": "Void Staff, Morellonomicon / Red Buff, Deathcap"
+          "core": ["Void Staff", "Morellonomicon", "Hextech Gunblade"],
+          "build": "Void Staff, Morellonomicon, then Gunblade or Adaptive Helm"
         },
         {
-          "unit": "Zyra / Alune",
-          "core": ["Void Staff", "Morellonomicon", "Spear of Shojin"],
-          "build": "Void Staff, Morellonomicon / Red Buff, Shojin"
+          "unit": "Sentinel",
+          "core": ["Gargoyle Stoneplate", "Protector's Vow", "Warmog's Armor"],
+          "build": "Gargoyle's, Protector's Vow, Warmog's"
         },
-        {
-          "unit": "Tanks",
-          "core": ["Protector's Vow", "Adaptive Helm"],
-          "build": "Sett or Amumu: generic tank items. Sentinel or Lillia: Protector's Vow, Adaptive Helm"
-        }
+        { "unit": "Taric", "core": ["Spirit Visage", "Warmog's Armor"], "build": "Leftover tank items" }
       ],
-      "augmentOrder": "Items or emblems, then econ, then combat",
+      "augmentOrder": "Econ, then items, then combat",
       "leveling": {
         "label": "Win streak",
-        "steps": [["4", "2-1"], ["5", "2-5"], ["6", "3-1"], ["7", "3-5"], ["8", "4-2", "Roll here"], ["9", "5-2"]],
-        "note": "Low on HP at 4-2? Switch to Invoker Teemo."
+        "steps": [["4", "2-1"], ["5", "2-5"], ["6", "3-2"], ["7", "3-5"], ["8", "4-1"], ["9", "5-1", "Roll here"]],
+        "note": "Under 50 HP at 4-1? Roll at 8, or switch to Invoker Teemo."
       },
       "openers": [
         {
           "name": "Blossom opener",
           "best": true,
           "board": "3 Blossom: Yorick tanks, Karma holds AP items",
-          "slam": "Jeweled Gauntlet, Blue Buff or Striker's for Ahri. Void Staff or Shojin if you're win-streaking",
-          "when": "The most consistent opener in the set. Karma's items go to Ahri later, and Yorick hands off to Amumu.",
+          "slam": "Jeweled Gauntlet or Shojin for Alune. Void Staff or Morellonomicon for Morgana if you're win-streaking",
+          "when": "The most consistent opener in the set. Karma's items go to Alune later.",
           "positioning": [["Rakan", 0, 2], ["Yorick", 0, 3], ["Kobuko", 0, 4], ["Yunara", 3, 0], ["Karma", 3, 1]]
         },
         {
@@ -315,43 +303,41 @@
           "positioning": [["Rakan", 0, 2], ["Yorick", 0, 3], ["Kobuko", 0, 4], ["Yunara", 3, 0], ["Azir", 3, 1]]
         }
       ],
-      "tip": "Put Ahri on the same side as the enemy carry so she kills it before your frontline breaks. Karma or Pebbles holds her items until she arrives in stage 4.",
+      "tip": "Win-streak stage 2 with AP items, then take losses in stage 4 if it gets you to 9 faster. Karma or Morgana holds Alune's items until she arrives.",
       "positioning": {
         "units": [
+          ["Elise", 0, 1],
           ["Sentinel ★★", 0, 2],
-          ["Krug", 0, 3],
-          ["Taric", 0, 4],
+          ["Taric", 0, 3],
+          ["Diana", 0, 4],
+          ["Cassiopeia", 1, 2],
           ["Morgana ★★", 2, 1],
-          ["Zyra", 3, 0],
-          ["Karma", 3, 1],
-          ["Ahri ★★", 3, 2],
-          ["Alune", 3, 4]
+          ["Elder Dragon", 2, 4],
+          ["Alune ★★", 3, 1]
         ],
         "notes": [
           "Fill the front row with tanks so nothing reaches the back.",
-          "Ahri and Zyra go in the back row, one hex apart.",
-          "Put Ahri on the same side as the enemy carry so she kills it first.",
-          "Morgana sits one row up to cover Ahri from divers."
+          "Alune goes in the back row, with Morgana one row up to guard her.",
+          "Put Alune on the same side as the enemy carry.",
+          "Add Elder Dragon at 9 behind the frontline."
         ]
       },
       "augmentTiers": {
-        "S": ["Staffsmith", "Jeweled Lotus II", "Wand Overflow"],
-        "A": ["Jeweled Lotus I", "Bronze For Life II", "Bronze For Life I", "Cybernetic Uplink"],
-        "B": ["Glass Cannon I"]
+        "S": ["Staffsmith", "Upward Mobility", "Late Game Specialist"],
+        "A": ["Luxury Subscription", "Jeweled Lotus II", "Wand Overflow"],
+        "B": ["Cybernetic Uplink", "Jeweled Lotus I"]
       },
       "itemTiers": {
-        "S": ["Invoker Emblem", "Jeweled Gauntlet", "Spear of Shojin", "Striker's Flail", "Void Staff"],
+        "S": ["Jeweled Gauntlet", "Spear of Shojin", "Void Staff", "Morellonomicon", "Gargoyle Stoneplate"],
         "A": [
-          "Blue Buff",
-          "Morellonomicon",
           "Nashor's Tooth",
-          "Rabadon's Deathcap",
-          "Spellweaver Emblem",
+          "Striker's Flail",
+          "Hextech Gunblade",
           "Protector's Vow",
           "Warmog's Armor",
-          "Bramble Vest"
+          "Blue Buff"
         ],
-        "B": ["Red Buff", "Adaptive Helm", "Spirit Visage", "Archangel's Staff"]
+        "B": ["Rabadon's Deathcap", "Archangel's Staff", "Adaptive Helm", "Spirit Visage"]
       }
     },
     {
@@ -362,9 +348,9 @@
       "style": "2-cost reroll",
       "role": "Anti-bust",
       "difficulty": "Easy",
-      "stats": { "avgPlace": 4.17, "top4": 58.8, "win": 8.3 },
-      "summary": "Your safety net. It rarely wins but usually lands top 4, which turns your 8ths into 4ths.",
-      "mustHave": "Jeweled Gauntlet + Shojin on Teemo, and early Teemo copies. Shares Morgana, Sentinel and AP items with Ahri.",
+      "stats": { "avgPlace": 4.13, "top4": 59.2, "win": 8.0 },
+      "summary": "Your safety net. It rarely wins but has the best top 4 rate on 18.7, which turns your 8ths into 4ths.",
+      "mustHave": "Jeweled Gauntlet + Shojin on Teemo, and early Teemo copies. Shares Morgana, Sentinel and AP items with Vanguard Morgana.",
       "carry": "Teemo",
       "board": ["Teemo ★★★", "Alistar ★★★", "LeBlanc", "Morgana ★★", "Sentinel", "Kobuko", "Veigar ★★★ (optional)"],
       "items": [
@@ -407,7 +393,7 @@
           "positioning": [["Kobuko", 0, 3], ["Yorick", 0, 4], ["Yunara", 3, 5], ["Karma", 3, 6]]
         }
       ],
-      "tip": "Your job is tempo and HP. Once Teemo is 3-star, stop rolling, level, and add Morgana 2 and Sentinel. Under 50 HP at 3-2 in an Ahri game? Move Ahri's items onto Teemo and reroll at 6.",
+      "tip": "Your job is tempo and HP. Once Teemo is 3-star, stop rolling, level, and add Morgana 2 and Sentinel. Under 50 HP at 3-2 in a Morgana game? Move Alune's items onto Teemo and reroll at 6.",
       "positioning": {
         "units": [
           ["Alistar ★★★", 0, 4],
@@ -466,24 +452,39 @@
   ],
   "sources": [
     {
-      "name": "TFT Academy comp guides, patch 18.6",
-      "url": "https://tftacademy.com/tierlist/comps",
-      "used": "Positioning, augment picks and best-in-slot items per comp"
+      "name": "OP.GG TFT meta comps, patch 18.7",
+      "url": "https://op.gg/tft/meta-trends/comps",
+      "used": "Placement, top 4 and win rates for all four comps"
     },
     {
-      "name": "TFT Academy item and augment tier lists, patch 18.6",
-      "url": "https://tftacademy.com/tierlist/augments",
-      "used": "Ranking items and augments into tiers"
+      "name": "TFT Codex comp tier list, patch 18.7",
+      "url": "https://tftcodex.com/comps/",
+      "used": "Tiers and items, Diamond+ games 17–19 Nov"
     },
     {
-      "name": "Bunnymuffins Set 18 meta, patch 18.6",
-      "url": "https://bunnymuffins.lol/meta/",
-      "used": "Builds, items, augments, leveling"
+      "name": "TopMeta patch 18.7 summary",
+      "url": "https://topmeta.gg/en/update/tft-patch-18-7",
+      "used": "Patch date and balance changes"
     },
     {
-      "name": "SeeMeta comp tier list, patch 18.6",
-      "url": "https://seemeta.com/tr/tft/synergies/Strong",
-      "used": "Placement, top 4 and win rates"
+      "name": "MID.GG Vanguard Alune & Morgana",
+      "url": "https://mid.gg/tft/comps/vanguard-alune-and-morgana",
+      "used": "Board, items and level data"
+    },
+    {
+      "name": "HexKey Vanguard Alune, patch 18.7",
+      "url": "https://hexkey.app/comps/metatft-vanguard-alune",
+      "used": "Augments, items and stage plan"
+    },
+    {
+      "name": "EmblemComp Vanguard Morgana, patch 18.7",
+      "url": "https://emblemcomp.gg/comp/vanguard-morgana",
+      "used": "Board and items"
+    },
+    {
+      "name": "TFT Coach Vanguard Morgana",
+      "url": "https://tftcoach.com/comps/vanguard-morgana",
+      "used": "Leveling plan"
     },
     {
       "name": "Mobalytics Set 18 openers guide",
